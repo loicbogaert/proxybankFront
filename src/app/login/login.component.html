@@ -1,0 +1,28 @@
+<form [formGroup] = "myForm">
+    <fieldset>
+        <legend>Login</legend>
+        <div class="login-form">
+            <div>
+                <label>Nom de compte :</label>
+                <input type="text" formControlName="username"
+                class="form-control"
+                id="username"
+                name="username"
+                required>
+            </div>
+
+            <div>
+                <label>Mot de passe :</label>
+                <input type="password" formControlName="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required>
+            </div>
+        </div>
+    </fieldset>
+    <div>
+        <button class="form-button"
+        (click)="login()" [disabled]="!myForm.valid">Login</button>
+    </div>
+</form>

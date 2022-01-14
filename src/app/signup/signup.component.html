@@ -1,0 +1,65 @@
+<form [formGroup] = "myForm">
+    <fieldset>
+        <legend>Signup</legend>
+        <div class="login-form">
+            <div>
+                <label>Nom de compte</label>
+                <input type="text" formControlName="username"
+                class="form-control"
+                id="username"
+                name="username"
+                required>
+            </div>
+
+            <div>
+                <label>Mot de passe</label>
+                <input type="password" formControlName="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required>
+            </div>
+
+            <div>
+                <label>Mot de passe (vérification)</label>
+                <input type="password" formControlName="passwordVerif"
+                class="form-control"
+                id="passwordVerif"
+                name="passwordVerif"
+                required>
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input type="email" formControlName="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required>
+            </div>
+
+            <div>
+                <label>Nom</label>
+                <input type="text" formControlName="nom"
+                class="form-control"
+                id="nom"
+                name="nom"
+                required>
+            </div>
+
+            <div>
+                <label>Prénom</label>
+                <input type="text" formControlName="prenom"
+                class="form-control"
+                id="prenom"
+                name="prenom"
+                required>
+            </div>
+        </div>
+    </fieldset>
+    <div>
+        <button class="form-button"
+        (click)="signup()" [disabled]="!myForm.valid">Signup</button>
+    </div>
+</form>
+

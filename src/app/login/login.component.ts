@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../login/auth.service';
 import { SignupService } from '../signup/signup.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,7 +30,6 @@ export class LoginComponent implements OnInit {
 
        localStorage.setItem("token", response.accessToken);
           console.log("logged in");
-          this.signupService.test()
         })
       }
     }

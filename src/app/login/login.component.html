@@ -1,28 +1,33 @@
-<form [formGroup] = "myForm">
-    <fieldset>
-        <legend>Login</legend>
-        <div class="login-form">
+<form [formGroup] = "myForm" class="form">
+        <div class="login-form container-fluid">
             <div>
-                <label>Nom de compte :</label>
+                <label>Utilisateur</label>
                 <input type="text" formControlName="username"
                 class="form-control"
                 id="username"
                 name="username"
+                placeholder="Entrez votre nom d'utilisateur"
                 required>
             </div>
 
             <div>
-                <label>Mot de passe :</label>
+                <label>Mot de passe</label>
                 <input type="password" formControlName="password"
                 class="form-control"
                 id="password"
                 name="password"
+                placeholder="Entrez votre mot de passe"
                 required>
             </div>
         </div>
-    </fieldset>
+
     <div>
-        <button class="form-button"
-        (click)="login()" [disabled]="!myForm.valid">Login</button>
+        <button type="button" class="btn-form-1"
+        (click)="login()" [disabled]="!myForm.valid">SE CONNECTER</button>
+    </div>
+    <div class="form-links-container">
+        <a href="">Mot de passe oublié ?</a>
+        <a href="/signup">s'enregistrer</a>
     </div>
 </form>
+

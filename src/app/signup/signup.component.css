@@ -1,0 +1,31 @@
+.login-form {
+    margin-bottom: 15px;
+    height: 100vh;
+}
+
+.form-title {
+    margin-bottom: 120px;
+}
+
+.btn-inscription {
+    margin-top: 60px;
+}
+
+.logo-container {
+    margin: 10px;
+}
+
+
+@media (max-width: 767px) {
+    .login-form {
+        height: 100%;
+    }
+
+    .form-title {
+        margin-bottom: 30px;
+    }
+
+    .btn-inscription {
+        margin-top: 30px;
+    }
+}

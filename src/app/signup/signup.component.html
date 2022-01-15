@@ -1,65 +1,87 @@
-<form [formGroup] = "myForm">
-    <fieldset>
-        <legend>Signup</legend>
-        <div class="login-form">
-            <div>
-                <label>Nom de compte</label>
-                <input type="text" formControlName="username"
-                class="form-control"
-                id="username"
-                name="username"
-                required>
+<form [formGroup] = "myForm" class="form">
+    <div class="login-form container-fluid d-flex flex-column align-items-center justify-content-center">
+
+        <h1 class="font-weight-bold form-title">INSCRIPTION</h1>
+
+        <div class="d-flex flex-md-row flex-column">
+            <!--Premier bloc du form-->
+            <div class="first-bloc">
+                <div>
+                    <label>Nom</label>
+                    <input type="text" formControlName="nom"
+                    class="form-control"
+                    id="nom"
+                    name="nom"
+                    placeholder="Entrez votre nom"
+                    required>
+                </div>
+    
+                <div>
+                    <label>Prénom</label>
+                    <input type="text" formControlName="prenom"
+                    class="form-control"
+                    id="prenom"
+                    name="prenom"
+                    placeholder="Entrez votre prénom"
+                    required>
+                </div>
+    
+                <div>
+                    <label>Nom d'utilisateur</label>
+                    <input type="text" formControlName="username"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    placeholder="Entrez votre nom d'utilisateur"
+                    required>
+                </div>
+            </div>
+            
+            <!--Place pour le logo-->
+            <div class="d-flex flex-column justify-content-center logo-container">
+                <img src="" class="logo">
+                <h1>Logo here</h1>
             </div>
 
-            <div>
-                <label>Mot de passe</label>
-                <input type="password" formControlName="password"
-                class="form-control"
-                id="password"
-                name="password"
-                required>
+            <!--Second bloc du form-->
+            <div class="second block">
+                <div>
+                    <label>Adresse Email</label>
+                    <input type="email" formControlName="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Entrez votre adresse email"
+                    required>
+                </div>
+           
+                <div>
+                    <label>Mot de passe</label>
+                    <input type="password" formControlName="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Entrez votre mot de passe"
+                    required>
+                </div>
+    
+                <div>
+                    <label>Mot de passe (vérification)</label>
+                    <input type="password" formControlName="passwordVerif"
+                    class="form-control"
+                    id="passwordVerif"
+                    name="passwordVerif"
+                    placeholder="Entrez votre mot de passe"
+                    required>
+                </div>
             </div>
 
+            <!--Bouton de validation du form-->
+        </div>
             <div>
-                <label>Mot de passe (vérification)</label>
-                <input type="password" formControlName="passwordVerif"
-                class="form-control"
-                id="passwordVerif"
-                name="passwordVerif"
-                required>
-            </div>
-
-            <div>
-                <label>Email</label>
-                <input type="email" formControlName="email"
-                class="form-control"
-                id="email"
-                name="email"
-                required>
-            </div>
-
-            <div>
-                <label>Nom</label>
-                <input type="text" formControlName="nom"
-                class="form-control"
-                id="nom"
-                name="nom"
-                required>
-            </div>
-
-            <div>
-                <label>Prénom</label>
-                <input type="text" formControlName="prenom"
-                class="form-control"
-                id="prenom"
-                name="prenom"
-                required>
+                <button class="btn-form-1 btn-inscription"
+                (click)="signup()" [disabled]="!myForm.valid">S'INSCRIRE</button>
             </div>
         </div>
-    </fieldset>
-    <div>
-        <button class="form-button"
-        (click)="signup()" [disabled]="!myForm.valid">Signup</button>
-    </div>
 </form>
 

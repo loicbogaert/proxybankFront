@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let conseiller of listConseiller" >{{conseiller.username}} -------- {{conseiller.email}}----
+        <span *ngIf="conseiller.clients">{{conseiller.clients.length}}</span>
+    
+    </li>
+</ul>

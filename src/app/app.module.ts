@@ -9,13 +9,15 @@ import { IndexConseillerComponent } from './index-conseiller/index-conseiller.co
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtInterceptor } from './_helpers/jwt-interceptors';
+import { IndexDirecteurComponent } from './index-directeur/index-directeur.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexConseillerComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    IndexDirecteurComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,8 @@
+<h3  *ngIf = "singleClient">infos du compte</h3>
+<div  *ngFor="compte of comptes let i = index">
+    <h5>Compte {{[i+1]}}</h5>
+    <p>Numéro de compte : {{comptes[i].numeroDeCompte}}</p>
+    <p>Solde du compte : {{comptes[i].solde}} €</p>
+    <p>Date d'ouverture du compte : {{comptes[i].dateOuverture}}</p>
+    <p>Autorisation decouvert : {{comptes[i].autorisationDecouvert}}</p>
+</div>

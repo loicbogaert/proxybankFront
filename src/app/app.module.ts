@@ -10,6 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtInterceptor } from './_helpers/jwt-interceptors';
 import { IndexDirecteurComponent } from './index-directeur/index-directeur.component';
+import { ListeClientsComponent } from './components/liste-clients/liste-clients.component';
+import { InfoPersoClientComponent } from './components/info-perso-client/info-perso-client.component';
+import { InfoComptesClientComponent } from './components/info-comptes-client/info-comptes-client.component';
+import { VirementComponent } from './components/virement/virement.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { IndexDirecteurComponent } from './index-directeur/index-directeur.compo
     IndexConseillerComponent,
     LoginComponent,
     SignupComponent,
-    IndexDirecteurComponent
+    IndexDirecteurComponent,
+    ListeClientsComponent,
+    InfoPersoClientComponent,
+    InfoComptesClientComponent,
+    VirementComponent
   ],
   imports: [
     BrowserModule,

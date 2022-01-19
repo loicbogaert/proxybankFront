@@ -1,0 +1,15 @@
+    <!--Conteneur Liste des clients d'un conseiller-->
+    <div>
+        <ul>
+            <h3>Liste des clients</h3>
+            <li *ngFor = "let client of clients let i=index"> <!--mapper la liste des clients du conseillers-->
+
+                <div (click)="giveId(i)"> <!--informations du client (nom, prenom)-->
+                    <p>Nom : {{client.nom}}</p> 
+                    <p>Prénom : {{client.prenom}}</p>
+                </div>
+                <button (click)="delete(client.id)">X</button>   <!--bouton de suppression (mettre une confirmation)-->
+            </li> 
+        </ul>
+        <button>Ajouter un client</button> <!--Bouton d'ajout d'un client (ouvre une popup avec un form : faire un nouveau composant)-->
+    </div>

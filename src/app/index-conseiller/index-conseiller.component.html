@@ -1,16 +1,16 @@
-<div> <!--Conteneur de la page (flex) -->
+<div  class="d-flex flex-row"> <!--Conteneur de la page (flex) -->
     
     <!--Composant avec liste des clients-->
     <app-liste-clients [clients]="clients" (clientId)="getId($event)"></app-liste-clients>
 
 
     <!--Conteneur des 3 divs info client-->
-    <div>
+    <div class="d-flex flex-row">
         <!--composant info persos-->
-        <app-info-perso-client [singleClient]="singleClient"></app-info-perso-client>
+        <app-info-perso-client [singleClient]="singleClient" class="m-5"></app-info-perso-client>
 
         <!--composant info compte et carte-->
-        <app-info-comptes-client [comptes]="comptes" [singleClient]="singleClient"></app-info-comptes-client>
+        <app-info-comptes-client [cartes]="cartes" [comptes]="comptes" [singleClient]="singleClient"></app-info-comptes-client>
 
         <!--composant pour faire un virement d'un compte a un autre-->
         <app-virement></app-virement>

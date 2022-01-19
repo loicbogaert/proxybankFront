@@ -1,8 +1,21 @@
-<h3  *ngIf = "singleClient">infos du compte</h3>
+<h3  *ngIf = "singleClient">infos des comptes</h3>
 <div  *ngFor="compte of comptes let i = index">
-    <h5>Compte {{[i+1]}}</h5>
+
+        <!--Compte Actif ou Comte Courrant-->
+        <h5 *ngIf="comptes[i].autorisationDecouverte > 0">Compte Courrant</h5>
+        <h5 *ngIf="comptes[i].autorisationDecouverte == 0">Compte Epargne</h5>
     <p>Numéro de compte : {{comptes[i].numeroDeCompte}}</p>
     <p>Solde du compte : {{comptes[i].solde}} €</p>
     <p>Date d'ouverture du compte : {{comptes[i].dateOuverture}}</p>
-    <p>Autorisation decouvert : {{comptes[i].autorisationDecouvert}}</p>
+</div>
+
+<h3 *ngIf = "singleClient">Infos de cartes</h3>
+<div *ngFor="carte of cartes let i = index">
+    <h5>Carte {{i+1}}</h5>
+    <p>Numero de carte: {{cartes[i].numero}} </p>
+    <p>Type de carte: {{cartes[i].typeCarte}}  </p>
+
+    <!--Carte active ou incative-->
+    <p *ngIf="cartes[i].active === true">La carte est active</p>
+    <p *ngIf="cartes[i].active === false">La carte est inactive</p>
 </div>

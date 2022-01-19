@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ListeClientsComponent } from '../components/liste-clients/liste-clients.component';
 import { IndexConseillerService } from '../index-conseiller/index-conseiller.service';
+import { Carte } from '../model/carte.model';
 import { Client } from '../model/client.model';
 import { Compte } from '../model/compte.model';
 
@@ -12,6 +13,7 @@ import { Compte } from '../model/compte.model';
 export class IndexConseillerComponent implements OnInit{
 
   comptes!:Compte[];
+  cartes!:Carte[];
   clients!:Client[];
   singleClient!: Client;
   clientId!: number;
@@ -25,6 +27,7 @@ export class IndexConseillerComponent implements OnInit{
     this.clientId = id;
     this.singleClient = this.clients[this.clientId]
     this.comptes = this.clients[this.clientId].comptes;
+    this.cartes = this.clients[this.clientId].cartes;
   }
 
   ngOnInit(): void {

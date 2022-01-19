@@ -1,4 +1,6 @@
 import { Compte } from "./compte.model";
+import { Carte } from "./carte.model";
+
 export interface Client{
     id:number;
     nom:string;
@@ -7,4 +9,5 @@ export interface Client{
     comptes:[Compte];
     adresse:string;
     codePostal:number;
+    cartes:[Carte];
 }

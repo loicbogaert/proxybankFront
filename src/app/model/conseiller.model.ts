@@ -7,6 +7,8 @@ export interface Conseiller{
     email:string;
     clients:[Client]
     nbClients:number;
+    totalCompteCourrant:number;
+    totalCompteEpargne:number;
 
 
 }

@@ -11,45 +11,9 @@ import { Client } from '../model/client.model';
   styleUrls: ['./index-directeur.component.css']
 })
 export class IndexDirecteurComponent implements OnInit {
-  
- id:number=0;
- agenceName:string='';
- listConseiller!:Conseiller[] ;
- clients!:Client[];
- nbClients!:number;
- 
-
-    
-   
-   
    //listConseil:any = this.myAgence.listConseiller;
-  constructor(private service: IndexDirecteurService,) { 
-   
-  }
+  constructor() { }
   
-  
-  
-  ngOnInit(): void {
-
-     this.service.getAgence().subscribe((agence:any)=>{
-       console.log(agence)
-       //TODO :  agence.listConseiller[index].clients => pour alimenter la liste
-     this.listConseiller = agence.listConseiller
-     
-     this.clients = agence.listConseiller.clients;
-    
-    this.nbClients = agence.listConseiller.clients;
-    console.log(this.nbClients);
-     this.id = agence.id;
-     this.agenceName =agence.agenceName
-     console.log(this.listConseiller);
-    
- 
-      
-    });
- 
-
-  
-  }
+  ngOnInit(): void {}
  
 }

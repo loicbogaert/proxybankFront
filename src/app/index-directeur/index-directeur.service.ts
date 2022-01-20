@@ -20,24 +20,15 @@ export class IndexDirecteurService {
   
   public getAgence():Observable<any> {
     return this.http.get(this.agence_URL).pipe(map((data:any)=>{
-      console.log(data)
+    
       return {
         id:data.id,
         agenceName:data.agenceName,
         listConseiller:data.listConseiller,
         clients:data.listConseiller.clients
-        
-          
-     
-
       }
     }))
   }
-    /*.subscribe(Response=>{
-      console.log(Response);
-     
-      return Response;
-     });*/
   }
    
 

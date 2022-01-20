@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtInterceptor } from './_helpers/jwt-interceptors';
 import { IndexDirecteurComponent } from './index-directeur/index-directeur.component';
+import { TableauConseillerComponent } from './components/tableau-conseiller/tableau-conseiller.component';
+import { EmployeNeededComponent } from './components/employe-needed/employe-needed.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { IndexDirecteurComponent } from './index-directeur/index-directeur.compo
     IndexConseillerComponent,
     LoginComponent,
     SignupComponent,
-    IndexDirecteurComponent
+    IndexDirecteurComponent,
+    TableauConseillerComponent,
+    EmployeNeededComponent
   ],
   imports: [
     BrowserModule,

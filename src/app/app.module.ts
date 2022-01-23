@@ -10,6 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtInterceptor } from './_helpers/jwt-interceptors';
 import { IndexDirecteurComponent } from './index-directeur/index-directeur.component';
+import { AdminComponent } from './admin/admin.component';
+import { CreateAgenceComponent } from './admin/create-agence/create-agence.component';
+import { TransferEmployeeComponent } from './admin/transfer-employee/transfer-employee.component';
+import { AssociationDirectorBankComponent } from './admin/association-director-bank/association-director-bank.component';
+import { AgencesComponent } from './admin/agences/agences.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +23,12 @@ import { IndexDirecteurComponent } from './index-directeur/index-directeur.compo
     IndexConseillerComponent,
     LoginComponent,
     SignupComponent,
-    IndexDirecteurComponent
+    IndexDirecteurComponent,
+    AdminComponent,
+    CreateAgenceComponent,
+    TransferEmployeeComponent,
+    AssociationDirectorBankComponent,
+    AgencesComponent,
   ],
   imports: [
     BrowserModule,

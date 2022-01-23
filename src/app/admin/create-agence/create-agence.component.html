@@ -1,0 +1,15 @@
+<div>
+  <h2 class="d-flex justify-content-center">CREATION D'UNE AGENCE</h2>
+  <form [formGroup]="agenceForm" (ngSubmit)="onFormSubmit()">
+    <div class="row mb-3">
+      <label for="agenceName" class="col-sm-2 col-form-label">Agence</label>
+      <div class="col-sm-10">
+        <input type="text" class="row form-control" id="agenceName" name="agenceName" formControlName="agenceName">
+      </div>
+    </div>
+    <div class="d-grid">
+      <button class="btn btn-primary" type="submit">Créer</button>
+    </div>
+  </form>
+
+</div>

@@ -10,14 +10,14 @@ const httpOptions= {
       'Access-Control-Allow-Origin': '*'
     }
   )
-  };  
+  };
 @Injectable({
   providedIn: 'root'
 })
 export class IndexDirecteurService {
-  agence_URL : string = `http://localhost:8080/agences/2/`;
+  agence_URL : string = `http://localhost:8080/agences/1/`;
   constructor(private http:HttpClient) { }
-  
+
   public getAgence():Observable<any> {
     return this.http.get(this.agence_URL).pipe(map((data:any)=>{
       console.log(data)
@@ -26,18 +26,18 @@ export class IndexDirecteurService {
         agenceName:data.agenceName,
         listConseiller:data.listConseiller,
         clients:data.listConseiller.clients
-        
-          
-     
+
+
+
 
       }
     }))
   }
     /*.subscribe(Response=>{
       console.log(Response);
-     
+
       return Response;
      });*/
   }
-   
+
 

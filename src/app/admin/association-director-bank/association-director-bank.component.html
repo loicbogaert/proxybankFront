@@ -1,0 +1,39 @@
+<p>association-director-bank works!</p>
+<div>
+  <h2 class="d-flex justify-content-center">ASSOCIATION D'UN DIRECTEUR A UNE BANQUE</h2>
+  <form [formGroup]="transferForm" (ngSubmit)="onTransferFormSubmit()">
+    <div class="row">
+      <div class="col">
+        <div class="row mb-3">
+          <label for="employeName" class="col-sm-2 col-form-label">Directeur</label>
+          <div class="col-sm-10">
+            <select class="form-select" formControlName="employeSelected">
+              <option *ngFor="let directeur of directeurs" [ngValue]="directeur">
+                {{directeur.nom}} {{directeur.prenom}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row mb-3">
+          <label for="agenceName" class="col-sm-2 col-form-label">Agence</label>
+          <div class="col-sm-10">
+            <select class="form-select" formControlName="agenceSelected">
+              <option *ngFor="let agence of agences" [ngValue]="agence">
+                {{agence.agenceName}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="col d-grid">
+          <button class="btn btn-primary" type="submit">Créer</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {{directeurs|json}}
+</div>

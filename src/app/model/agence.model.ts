@@ -1,8 +1,6 @@
 import { Conseiller } from "./conseiller.model";
 export interface Agence{
-    id:number;
+    id?:number;
     agenceName:string;
-    listConseiller:[Conseiller];
-    
-
+    listConseiller?:[Conseiller];
 }

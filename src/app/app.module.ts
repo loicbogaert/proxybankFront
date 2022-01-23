@@ -12,6 +12,12 @@ import { JwtInterceptor } from './_helpers/jwt-interceptors';
 import { IndexDirecteurComponent } from './index-directeur/index-directeur.component';
 import { TableauConseillerComponent } from './components/tableau-conseiller/tableau-conseiller.component';
 import { EmployeNeededComponent } from './components/employe-needed/employe-needed.component';
+import { AdminComponent } from './admin/admin.component';
+import { CreateAgenceComponent } from './admin/create-agence/create-agence.component';
+import { TransferEmployeeComponent } from './admin/transfer-employee/transfer-employee.component';
+import { AssociationDirectorBankComponent } from './admin/association-director-bank/association-director-bank.component';
+import { AgencesComponent } from './admin/agences/agences.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +27,12 @@ import { EmployeNeededComponent } from './components/employe-needed/employe-need
     SignupComponent,
     IndexDirecteurComponent,
     TableauConseillerComponent,
-    EmployeNeededComponent
+    EmployeNeededComponent,
+    AdminComponent,
+    CreateAgenceComponent,
+    TransferEmployeeComponent,
+    AssociationDirectorBankComponent,
+    AgencesComponent
   ],
   imports: [
     BrowserModule,

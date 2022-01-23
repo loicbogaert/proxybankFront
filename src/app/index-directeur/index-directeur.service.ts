@@ -10,17 +10,17 @@ const httpOptions= {
       'Access-Control-Allow-Origin': '*'
     }
   )
-  };  
+  };
 @Injectable({
   providedIn: 'root'
 })
 export class IndexDirecteurService {
-  agence_URL : string = `http://localhost:8080/agences/2/`;
+  agence_URL : string = `http://localhost:8080/agences/1/`;
   constructor(private http:HttpClient) { }
-  
+
   public getAgence():Observable<any> {
     return this.http.get(this.agence_URL).pipe(map((data:any)=>{
-    
+
       return {
         id:data.id,
         agenceName:data.agenceName,
@@ -30,5 +30,3 @@ export class IndexDirecteurService {
     }))
   }
   }
-   
-

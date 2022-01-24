@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ListeClientsComponent } from '../components/liste-clients/liste-clients.component';
 import { IndexConseillerService } from '../index-conseiller/index-conseiller.service';
 import { Carte } from '../model/carte.model';
@@ -26,7 +26,7 @@ export class IndexConseillerComponent implements OnInit{
   getId(id: any):void {
     this.clientId = id;
     this.singleClient = this.clients[this.clientId]
-    this.comptes = this.clients[this.clientId].comptes;
+    this.comptes = [this.clients[this.clientId].compteCourrant, this.clients[this.clientId].compteEpargne];
     this.cartes = this.clients[this.clientId].cartes;
   }
 

@@ -1,19 +1,18 @@
-<div  class="d-flex flex-row"> <!--Conteneur de la page (flex) -->
-    
-    <!--Composant avec liste des clients-->
-    <app-liste-clients [clients]="clients" (clientId)="getId($event)"></app-liste-clients>
+  <!--Conteneur des 3 divs info client-->
+    <div class="d-flex flex-column">
+        <div class="d-flex flex-row">
+            <!--Composant avec liste des clients-->
+            <app-liste-clients class="border rounded border-dark p-2 m-2" [clients]="clients" (clientId)="getId($event)"></app-liste-clients>
+            <!--composant info persos-->
+            <app-info-perso-client class="border rounded border-dark p-2 m-2" [singleClient]="singleClient" ></app-info-perso-client>
+        </div>
 
 
-    <!--Conteneur des 3 divs info client-->
-    <div class="d-flex flex-row">
-        <!--composant info persos-->
-        <app-info-perso-client [singleClient]="singleClient" class="m-5"></app-info-perso-client>
+        <div class="d-flex flex-row">
+            <!--composant info compte et carte-->
+            <app-info-comptes-client class="border rounded border-dark p-2 m-2" [cartes]="cartes" [comptes]="comptes" [singleClient]="singleClient"></app-info-comptes-client>
 
-        <!--composant info compte et carte-->
-        <app-info-comptes-client [cartes]="cartes" [comptes]="comptes" [singleClient]="singleClient"></app-info-comptes-client>
-
-        <!--composant pour faire un virement d'un compte a un autre-->
-        <app-virement></app-virement>
+            <!--composant pour faire un virement d'un compte a un autre-->
+            <app-virement class="border rounded border-dark p-2 m-2" [singleClient]="singleClient" [clients]="clients"></app-virement>
+        </div>
     </div>
-</div>
-

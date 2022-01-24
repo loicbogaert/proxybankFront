@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { AppComponent } from './app.component';
 import { IndexConseillerComponent } from './index-conseiller/index-conseiller.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +21,9 @@ import { TransferEmployeeComponent } from './admin/transfer-employee/transfer-em
 import { AssociationDirectorBankComponent } from './admin/association-director-bank/association-director-bank.component';
 import { AgencesComponent } from './admin/agences/agences.component';
 
+import { MoyenneCompteCourrantComponent } from './components/moyenne-compte-courrant/moyenne-compte-courrant.component';
+import { MoyenneCompteEpargneComponent } from './components/moyenne-compte-epargne/moyenne-compte-epargne.component';
+import { GraphiqueAuditComponent } from './components/graphique-audit/graphique-audit.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +38,20 @@ import { AgencesComponent } from './admin/agences/agences.component';
     CreateAgenceComponent,
     TransferEmployeeComponent,
     AssociationDirectorBankComponent,
-    AgencesComponent
+    AgencesComponent,
+    MoyenneCompteCourrantComponent,
+    MoyenneCompteEpargneComponent,
+    GraphiqueAuditComponent
   ],
   imports: [
+ 
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HighchartsChartModule
+ 
   ],
   providers: [
     {

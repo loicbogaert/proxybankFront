@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-hover w-100">
     <thead class="table-light">
         <tr>
             <th scope="col">Conseiller</th>
@@ -7,12 +7,50 @@
             <th scope="col">Total compte épargne</th>
         </tr>
     </thead>
-    <tbody>
-        <tr scope="row" *ngFor="let conseiller of listConseiller">
-        <td>{{conseiller.nom}} {{conseiller.prenom}}</td>
+    <tbody c>
+        <tr scope="row" *ngFor="let conseiller of listConseiller; let i = index;">
+            
+        <td><a data-bs-toggle="modal" [attr.data-bs-target]="'#m'+ i" >{{conseiller.nom}} {{conseiller.prenom}}</a></td>
         <td *ngIf="conseiller.clients">{{conseiller.clients.length}}</td>
         <td>{{conseiller.totalCompteCourrant}} €</td>
         <td>{{conseiller.totalCompteEpargne}} €</td>
+        <div class="modal fade" id="{{'m'+i}}"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <table>
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Solde compte courrant</th>
+                            <th scope="col">Solde compte épargne</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr scope="row" *ngFor="let client of clients">
+                            <td>{{client.nom}}</td>
+                            <td>{{client.prenom}}</td>
+                           
+                            <td>{{client.compteCourrant.solde}}</td>
+                            <td>{{client.compteEpargne.solde}}</td>
+
+                           
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </tr>
     </tbody>
 </table>

@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtInterceptor } from './_helpers/jwt-interceptors';
 import { IndexDirecteurComponent } from './index-directeur/index-directeur.component';
+
+
 import { TableauConseillerComponent } from './components/tableau-conseiller/tableau-conseiller.component';
 import { EmployeNeededComponent } from './components/employe-needed/employe-needed.component';
 import { AdminComponent } from './admin/admin.component';
@@ -17,6 +19,12 @@ import { CreateAgenceComponent } from './admin/create-agence/create-agence.compo
 import { TransferEmployeeComponent } from './admin/transfer-employee/transfer-employee.component';
 import { AssociationDirectorBankComponent } from './admin/association-director-bank/association-director-bank.component';
 import { AgencesComponent } from './admin/agences/agences.component';
+
+
+import { ListeClientsComponent } from './components/liste-clients/liste-clients.component';
+import { InfoPersoClientComponent } from './components/info-perso-client/info-perso-client.component';
+import { InfoComptesClientComponent } from './components/info-comptes-client/info-comptes-client.component';
+import { VirementComponent } from './components/virement/virement.component';
 
 
 @NgModule({
@@ -32,7 +40,12 @@ import { AgencesComponent } from './admin/agences/agences.component';
     CreateAgenceComponent,
     TransferEmployeeComponent,
     AssociationDirectorBankComponent,
-    AgencesComponent
+    AgencesComponent,
+    ListeClientsComponent,
+    InfoPersoClientComponent,
+    InfoComptesClientComponent,
+    VirementComponent
+
   ],
   imports: [
     BrowserModule,

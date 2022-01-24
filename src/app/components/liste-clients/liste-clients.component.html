@@ -1,0 +1,175 @@
+    <!--Conteneur Liste des clients d'un conseiller-->
+    <div>
+        <ul>
+            <h3>Liste des clients</h3>
+            <li *ngFor = "let client of clients let i=index"> <!--mapper la liste des clients du conseillers-->
+
+                <div (click)="giveId(i)" class="d-flex flex-row"> <!--informations du client (nom, prenom)-->
+                    <p>Nom : {{client.nom}}</p> 
+                    <p>Prénom : {{client.prenom}}</p>
+                    <button  type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#idClientModif' + i" >Modifier</button> <!--Bouton modifier - ouvre un modal de modificaition-->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#idClientSuppr' + i" >X</button>   <!--bouton de suppression (mettre une confirmation)-->
+                                     
+                    
+                    <!-- Modal Supression de client-->
+                <div class="modal fade" id="{{'idClientSuppr'+i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Suppression de client {{client.nom}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Voulez-vous vraiment supprimer le client {{client.nom}} {{client.prenom}} ?
+                            </div>
+                            <div class="modal-footer">
+                                
+                            <button type="button" class="btn btn-primary" (click)="delete(client.id)">Oui</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            
+
+                <!--
+                    Modal de modification d'un client
+                -->
+                <div class="modal fade" id="{{'idClientModif'+i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modification des informations du client</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                             <form>
+                                 <div class="d-flex flex-column align-items-center">
+                                    <label>Nom</label>
+                                    <input type="text" value="{{clients[i].nom}}" class="w-100">
+                                 </div>
+
+                                 <div class="d-flex flex-column align-items-center">
+                                    <label>Prénom</label>
+                                    <input type="text" value="{{clients[i].prenom}}" class="w-100">
+                                </div>
+
+                                <div class="d-flex flex-column align-items-center">
+                                    <label>Adresse</label>
+                                    <input type="text" value="{{clients[i].adresse}}" class="w-100">
+                                </div>
+
+                                <div class="d-flex flex-column align-items-center">
+                                    <label>Code postal</label>
+                                    <input type="text" value="{{clients[i].codePostal}}" class="w-100">
+                                </div>
+
+                                <div class="d-flex flex-column align-items-center">
+                                    <label>Téléphone</label>
+                                    <input type="text" value="{{clients[i].telephone}}" class="w-100">
+                                </div>
+                        </form>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+            </li> 
+        </ul>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createClient" >Ajouter un client</button> <!--Bouton d'ajout d'un client (ouvre une popup avec un form : faire un nouveau composant)-->
+
+                        <!-- Modal Creation Client -->
+        <div class="modal fade" id="createClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modification des informations du client</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                <div class="modal-body d-flex flex-row justify-content-between">
+                     <form>
+                         <h5 class="text-center">Création d'un client</h5>
+                         <div  class="d-flex flex-column align-items-center">
+                            <label>Nom</label>
+                            <input type="text" value="" class="w-100">
+                         </div>
+
+                         <div  class="d-flex flex-column align-items-center">
+                            <label>Prénom</label>
+                            <input type="text" value="" class="w-100">
+                        </div>
+
+                         <div  class="d-flex flex-column align-items-center">
+                            <label>Adresse</label>
+                            <input type="text" value="" class="w-100">
+                        </div>
+
+                        <div  class="d-flex flex-column align-items-center">
+                            <label>Code postal</label>
+                            <input type="text" value="" class="w-100">
+                        </div>
+
+        
+                        <div  class="d-flex flex-column align-items-center">
+                            <label>Téléphone</label>
+                            <input type="text" value="" class="w-100">
+                        </div>
+                    </form>
+
+                    <div>
+                            <!--Formulaire compte courrant-->
+                            <form>
+                                <h5 class="text-center">Compte Courrant</h5>
+                                <div class="d-flex flex-column align-items-center">
+                                   <label>Numéro de compte</label>
+                                   <input type="text" value="" class="w-100">
+                                </div>
+    
+                                <div class="d-flex flex-column align-items-center">
+                                   <label>Prénom</label>
+                                   <input type="text" value="" class="w-100">
+                               </div>
+                            </form>
+    
+                            <!--Formulaire compte Epargne-->
+                            <form>
+                                <h5 class="text-center">Compte Epargne</h5>
+                                <div class="d-flex flex-column align-items-center">
+                                    <label>Prénom</label>
+                                    <input type="text" value="" class="w-100">
+                                </div>
+    
+                                <div class="d-flex flex-column align-items-center">
+                                    <label>Adresse</label>
+                                    <input type="text" value="" class="w-100">
+                                </div>
+                              </form>
+                    </div>
+
+
+                        <!--Formulaire compte Carte-->
+                        <form>
+                            <h5 class="text-center">Carte</h5>
+                            <div class="d-flex flex-column align-items-center">
+                                <label>Prénom</label>
+                                <input type="text" value="" class="w-100">
+                            </div>
+
+                            <div class="d-flex flex-column align-items-center">
+                                <label>Adresse</label>
+                                <input type="text" value="" class="w-100">
+                            </div>
+                        </form>
+            </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Ajouter le client</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>

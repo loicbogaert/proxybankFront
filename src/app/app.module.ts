@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtInterceptor } from './_helpers/jwt-interceptors';
 import { IndexDirecteurComponent } from './index-directeur/index-directeur.component';
+
+
 import { TableauConseillerComponent } from './components/tableau-conseiller/tableau-conseiller.component';
 import { EmployeNeededComponent } from './components/employe-needed/employe-needed.component';
 import { AdminComponent } from './admin/admin.component';
@@ -24,6 +26,12 @@ import { AgencesComponent } from './admin/agences/agences.component';
 import { MoyenneCompteCourrantComponent } from './components/moyenne-compte-courrant/moyenne-compte-courrant.component';
 import { MoyenneCompteEpargneComponent } from './components/moyenne-compte-epargne/moyenne-compte-epargne.component';
 import { GraphiqueAuditComponent } from './components/graphique-audit/graphique-audit.component';
+
+import { ListeClientsComponent } from './components/liste-clients/liste-clients.component';
+import { InfoPersoClientComponent } from './components/info-perso-client/info-perso-client.component';
+import { InfoComptesClientComponent } from './components/info-comptes-client/info-comptes-client.component';
+import { VirementComponent } from './components/virement/virement.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +49,12 @@ import { GraphiqueAuditComponent } from './components/graphique-audit/graphique-
     AgencesComponent,
     MoyenneCompteCourrantComponent,
     MoyenneCompteEpargneComponent,
-    GraphiqueAuditComponent
+    GraphiqueAuditComponent,
+    ListeClientsComponent,
+    InfoPersoClientComponent,
+    InfoComptesClientComponent,
+    VirementComponent
+
   ],
   imports: [
  

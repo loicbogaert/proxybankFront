@@ -17,7 +17,7 @@ export class TableauConseillerComponent implements OnInit {
   
   clients!:Client[];
   nbClients!:number;
-  totalCompteCourrant:number=0;
+  totalCompteCourrant:number = 0;
   totalCompteEpargne:number=0;
   constructor(private service: IndexDirecteurService,) { 
     
@@ -27,6 +27,7 @@ export class TableauConseillerComponent implements OnInit {
   
   
 ngOnInit(): void {
+  this.totalCompteEpargne=0;
   
    this.service.getAgence().subscribe((agence:any)=>{
      // console.log(agence)
@@ -34,30 +35,27 @@ ngOnInit(): void {
       let i = 1;
   
       this.listConseiller.forEach(el => {
-  
+        
         el.totalCompteCourrant=0;
+        el.totalCompteEpargne=0;
     
         i++;
         el.clients.forEach(client =>{
+          this.clients = el.clients;
+          console.log(this.clients);
+          el.totalCompteEpargne += client.compteEpargne.solde;
+         el.totalCompteCourrant += client.compteCourrant.solde;
+        
+         
+      
 
-          client.comptes.forEach(compte =>{
-
-            if(compte.solde!=NaN && compte.hasOwnProperty('autorisationDecouverte')){
-              el.totalCompteCourrant = el.totalCompteCourrant + compte.solde;
-            
-            
-            if(compte.solde!=NaN && compte.hasOwnProperty('tauxRemuneration')){
-              this.totalCompteEpargne = this.totalCompteEpargne + compte.solde;
-            }
-
-       }
-
-     })
     })
+    
   }); 
+ 
   });
 
-
+ 
 
 }
 

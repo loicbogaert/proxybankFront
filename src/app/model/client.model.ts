@@ -4,7 +4,8 @@ export interface Client{
     nom:string;
     prenom:string;
     telephone:string;
-    comptes:[Compte];
+    compteCourrant:Compte;
+    compteEpargne:Compte;
     adresse:string;
     codePostal:number;
 }

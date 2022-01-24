@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { AppComponent } from './app.component';
 import { IndexConseillerComponent } from './index-conseiller/index-conseiller.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +15,9 @@ import { JwtInterceptor } from './_helpers/jwt-interceptors';
 import { IndexDirecteurComponent } from './index-directeur/index-directeur.component';
 import { TableauConseillerComponent } from './components/tableau-conseiller/tableau-conseiller.component';
 import { EmployeNeededComponent } from './components/employe-needed/employe-needed.component';
+import { MoyenneCompteCourrantComponent } from './components/moyenne-compte-courrant/moyenne-compte-courrant.component';
+import { MoyenneCompteEpargneComponent } from './components/moyenne-compte-epargne/moyenne-compte-epargne.component';
+import { GraphiqueAuditComponent } from './components/graphique-audit/graphique-audit.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +27,20 @@ import { EmployeNeededComponent } from './components/employe-needed/employe-need
     SignupComponent,
     IndexDirecteurComponent,
     TableauConseillerComponent,
-    EmployeNeededComponent
+    EmployeNeededComponent,
+    MoyenneCompteCourrantComponent,
+    MoyenneCompteEpargneComponent,
+    GraphiqueAuditComponent
   ],
   imports: [
+ 
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HighchartsChartModule
+ 
   ],
   providers: [
     {

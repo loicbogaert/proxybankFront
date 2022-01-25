@@ -1,4 +1,4 @@
-<h3  *ngIf = "singleClient">Comptes du client</h3>
+<h3>Comptes du client</h3>
 
 <div class="d-flex flex-row" >
     <div class="d-flex flex-row">
@@ -14,7 +14,7 @@
     </div>
     
     <div>
-        <h5 *ngIf = "singleClient">Infos de cartes</h5>
+        <h5>Infos de cartes</h5>
         <div *ngFor="carte of cartes let i = index">
             <h5>Carte {{i+1}}</h5>
             <p>Numero de carte: {{cartes[i].numero}} </p>

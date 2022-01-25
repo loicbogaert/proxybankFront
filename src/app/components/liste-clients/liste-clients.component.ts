@@ -13,34 +13,34 @@ import { Carte } from 'src/app/model/carte.model';
 export class ListeClientsComponent implements OnInit {
 
   clientModify : FormGroup = this.fb.group({
-    nom :  '',
-    prenom :  '',
-    adresse :  '',
-    codePostal : '',
-    telephone :  ''
+    nom :  ['', Validators.required],
+    prenom :   ['', Validators.required], 
+    adresse :   ['', Validators.required], 
+    codePostal :  ['', Validators.required], 
+    telephone :   ['', Validators.required], 
   })
 
   addClient : FormGroup = this.fb.group ({
-    nom :  '',
-    prenom :  '',
-    adresse :  '',
-    codePostal : '',
-    telephone :  ''
+    nom :   ['', Validators.required], 
+    prenom :   ['', Validators.required], 
+    adresse :   ['', Validators.required], 
+    codePostal :  ['', Validators.required], 
+    telephone :   ['', Validators.required], 
   })
 
   compteCourrantModify : FormGroup = this.fb.group({
-    numero :  '',
-    solde :  ''
+    numero :   ['', Validators.required], 
+    solde :   ['', Validators.required], 
   })
 
   compteEpargneModify : FormGroup = this.fb.group({
-    numero :  '',
-    solde :  ''
+    numero :   ['', Validators.required], 
+    solde :   ['', Validators.required], 
   })
 
   carteModify : FormGroup = this.fb.group({
-    numero :  '',
-    typeCarte :  ''
+    numero :   ['', Validators.required], 
+    typeCarte :   ['', Validators.required], 
   })
 
   @Output() clientId = new EventEmitter<any>();
@@ -52,6 +52,7 @@ export class ListeClientsComponent implements OnInit {
   carteActuelle! : Carte;
 
   fullRegisterClient! : any;
+  modifiedClient! : Client;
 
   constructor(private service: IndexConseillerService,
               private fb: FormBuilder
@@ -71,22 +72,15 @@ export class ListeClientsComponent implements OnInit {
   }
 
  public formUpdateClient() {
-    console.log(this.clientModify.value)
+    //this.clientModify = this.
   }
   
 
  public addClientForm(){
    this.fullRegisterClient = this.addClient.value, this.compteCourrantModify.value, this.compteEpargneModify.value, this.carteModify.value;
-  console.log(this.compteCourrantModify.value, this.compteEpargneModify.value, this.carteModify.value.typeCarte, this.carteModify.value.numero)
 
   this.service.fullRegisterClient(this.fullRegisterClient.nom, this.fullRegisterClient.prenom, this.fullRegisterClient.adresse, this.fullRegisterClient.codePostal, this.fullRegisterClient.telephone, this.fullRegisterClient.numeroCompteCourrant, 
     this.fullRegisterClient.soldeCompteCourrant, this.fullRegisterClient.soldeCompteEpargne, this.fullRegisterClient.numeroCompteEpargne, this.carteModify.value.typeCarte, this.carteModify.value.numero).subscribe(data=> {
-    
-      console.log(this.carteModify.value.typeCarte);
-      console.log(this.carteModify.value.numero)
-    console.log(this.fullRegisterClient.numero, this.fullRegisterClient.typeCarte)
-    console.log("l 80", this.fullRegisterClient)
-    console.log(this.fullRegisterClient);
   })
   }
 }

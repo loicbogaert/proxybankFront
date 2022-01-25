@@ -4,7 +4,11 @@
     <div class="row mb-3">
       <label for="agenceName" class="col-sm-2 col-form-label">Agence</label>
       <div class="col-sm-10">
-        <input placeholder="Veillez saisir le nom de l'agence" type="text" class="row form-control" id="agenceName" name="agenceName" formControlName="agenceName" required minlength="4">
+        <input placeholder="Veillez saisir le nom de l'agence" type="text" class="row form-control" id="agenceName" name="agenceName" formControlName="agenceName" required minlength="4" [ngClass]="{ 'is-invalid': !agenceForm.controls['agenceName'].valid && agenceForm.controls['agenceName'].touched }">
+        <div class="invalid-feedback" *ngIf="!agenceForm.controls['agenceName'].valid && agenceForm.controls['agenceName'].touched">
+          <div *ngIf="agenceForm.controls['agenceName'].errors?.['required']"> Le nom est obligatoire</div>
+          <div *ngIf="agenceForm.controls['agenceName'].errors?.['minlength']">Le nom doit containir au minimum 4 caratères</div>
+        </div>
       </div>
     </div>
     <div class="d-grid">

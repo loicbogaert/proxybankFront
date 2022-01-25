@@ -3,4 +3,5 @@ export interface Agence{
     id?:number;
     agenceName:string;
     listConseiller?:[Conseiller];
+    directeur?:any;
 }

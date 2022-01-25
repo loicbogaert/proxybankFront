@@ -1,13 +1,12 @@
-<p>transfer-employee works!</p>
-<div>
   <h2 class="d-flex justify-content-center">TRANSFER D'EMPLOYE VERS UNE AUTRE AGENCE</h2>
   <form [formGroup]="transferForm" (ngSubmit)="onTransferFormSubmit()">
-    <div class="row">
+    <div class="row row-cols-1 row-cols-md-3">
       <div class="col">
         <div class="row mb-3">
           <label for="employeName" class="col-sm-2 col-form-label">Employé</label>
           <div class="col-sm-10">
             <select class="form-select" formControlName="employeSelected">
+              <option [ngValue]="null" disabled>Veillez choisir le nom du conseiller</option>
               <option *ngFor="let conseiller of conseillers" [ngValue]="conseiller">
                 {{conseiller.nom}} {{conseiller.prenom}}
               </option>
@@ -20,7 +19,8 @@
           <label for="agenceName" class="col-sm-2 col-form-label">Agence</label>
           <div class="col-sm-10">
             <select class="form-select" formControlName="agenceSelected">
-              <option *ngFor="let agence of agences" [ngValue]="agence">
+              <option [ngValue]="null" disabled>Veillez choisir le nom de l'agence</option>
+              <option *ngFor="let agence of listeAgences" [ngValue]="agence">
                 {{agence.agenceName}}
               </option>
             </select>
@@ -29,9 +29,10 @@
       </div>
       <div class="col">
         <div class="col d-grid">
-          <button class="btn btn-primary" type="submit">Créer</button>
+          <button class="btn btn-primary" type="submit" [disabled]="!transferForm.valid">Valider</button>
         </div>
       </div>
     </div>
   </form>
-</div>
+
+

@@ -1,10 +1,11 @@
 <div class="container">
-  <app-create-agence></app-create-agence>
-  <app-association-director-bank></app-association-director-bank>
-  <app-transfer-employee></app-transfer-employee>
+  <div class="row">
+    <app-create-agence></app-create-agence>
+  </div>
+  <div class="row">
+    <app-association-director-bank [listeAgences]="agences"></app-association-director-bank>
+  </div>
+  <div class="row">
+    <app-transfer-employee [listeAgences]="agences"></app-transfer-employee>
+  </div>
 </div>
-<ul>
-  <li *ngFor="let agence of agences" >{{agence.id}}
-
-  </li>
-</ul>

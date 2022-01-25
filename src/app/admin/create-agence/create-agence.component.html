@@ -4,11 +4,11 @@
     <div class="row mb-3">
       <label for="agenceName" class="col-sm-2 col-form-label">Agence</label>
       <div class="col-sm-10">
-        <input type="text" class="row form-control" id="agenceName" name="agenceName" formControlName="agenceName">
+        <input placeholder="Veillez saisir le nom de l'agence" type="text" class="row form-control" id="agenceName" name="agenceName" formControlName="agenceName" required minlength="4">
       </div>
     </div>
     <div class="d-grid">
-      <button class="btn btn-primary" type="submit">Créer</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!agenceForm.valid">Créer</button>
     </div>
   </form>
 

@@ -14,6 +14,7 @@ export class CreateAgenceComponent implements OnInit {
 
   dataSaved = false;
   agenceForm = {} as FormGroup;
+  agenceName:string=''
 
   constructor(private formBuilder: FormBuilder, private agencesService: AgencesService) { }
 
@@ -28,6 +29,7 @@ export class CreateAgenceComponent implements OnInit {
     let agence = this.agenceForm.value;
     console.log(agence)
     this.creationAgence(agence.agenceName);
+    alert('Agence :' + JSON.stringify(this.agenceForm.value.agenceName, null, 4)+' saved!');
     this.agenceForm.reset();
   }
   creationAgence(agence: Agence) {

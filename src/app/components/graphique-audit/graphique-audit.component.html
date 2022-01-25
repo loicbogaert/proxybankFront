@@ -2,7 +2,8 @@
   <div>
     <div style="display: block">
       <canvas baseChart
-        [data]="barChartData"
+        [datasets]="barChartData"
+        [labels]="barChartLabels "
         [options]="barChartOptions"
        
         [type]="barChartType"
@@ -10,6 +11,6 @@
         (chartClick)="chartClicked($event)">
       </canvas>
     </div>
-    <button mat-button mat-raised-button color="primary" (click)="randomize()">Afficher</button>
+  
   </div>
 </div>

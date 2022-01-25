@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartDataset, ChartDatasetProperties, ChartEvent, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 import { IndexDirecteurService } from 'src/app/index-directeur/index-directeur.service';
@@ -24,45 +24,21 @@ export class GraphiqueAuditComponent implements OnInit {
   ListConseillerName:string[] = [];
   listConseillerTotalCompteCourrant:number[] = [];
   listConseillerTotalCompteEpargne:number[] = []
+  moyenneCompteCourrant:number[]=[];
+  moyenneCompteEpargne:number[]=[];
   conseiller!:Conseiller;
   clients!:Client[];
   nbClients!:number;
   totalCompteCourrant:number = 0;
   totalCompteEpargne:number=0;
-  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+  @ViewChild(BaseChartDirective) 
+  chart!: BaseChartDirective | undefined 
+  barChartOptions!: ChartOptions 
+  barChartType!: ChartType
+  barChartLegend:any 
+  barChartData!: ChartDataset[]
+  barChartLabels!: string[] 
 
-public barChartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
-    scales: {
-      x: {},
-      y: {
-        min: 10
-      }
-    },
-    plugins: {
-      legend: {
-        display: true,
-      }
-
-    }
-  };
-  public barChartType: ChartType = 'bar';
-
-
-  public barChartData: ChartData<'bar'> = {
-    labels: this.ListConseillerName,
-    datasets: [
-
-      { data: this.listConseillerTotalCompteCourrant, label: 'Compte courrant' },
-      { data: this.listConseillerTotalCompteEpargne,label:'Compte Epargne'}
-     
-    ]
-  };
- 
-
-
-  // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
     console.log(event, active);
   }
@@ -71,21 +47,13 @@ public barChartOptions: ChartConfiguration['options'] = {
     console.log(event, active);
   }
 
-  public randomize(): void {
-    // Only Change 3 values
-    console.log(this.barChartData.datasets)
-    
 
-    this.chart?.update();
-  }
-
-  constructor(private service: IndexDirecteurService) { }
+ 
+  constructor(private service: IndexDirecteurService) {  ;}
 
   ngOnInit(): void {
+    
     this.totalCompteEpargne=0;
-    
-    
-   
     this.service.getAgence().subscribe((agence:any)=>{
       // console.log(agence)
        this.listConseiller = agence.listConseiller
@@ -104,13 +72,35 @@ public barChartOptions: ChartConfiguration['options'] = {
       })
       this.listConseillerTotalCompteCourrant.push(conseiller.totalCompteCourrant);
       this.listConseillerTotalCompteEpargne.push(conseiller.totalCompteEpargne);
+      this.totalCompteCourrant+=conseiller.totalCompteCourrant;
+      this.totalCompteEpargne +=conseiller.totalCompteEpargne
       this.ListConseillerName.push(conseiller.nom);
      
 
     }); 
-  
-  });
 
+    for(let j =0 ; j< this.listConseillerTotalCompteCourrant.length;j++){
+      console.log(this.totalCompteCourrant)
+      this.moyenneCompteCourrant.push((this.totalCompteCourrant/i+1));
+      this.moyenneCompteEpargne.push((this.totalCompteEpargne/i+1));
+    }
+    this.barChartOptions= {responsive :true};
+    this.barChartType = 'bar';
+    this.barChartLegend=true;
+    this.barChartData=[
+      { data:this.moyenneCompteCourrant,label:'Moyenne compte courrant ',type: 'line'},
+        { data: this.moyenneCompteEpargne,label:'Moyenne compte épargne',type:'line'},
+        { data: this.listConseillerTotalCompteCourrant, label: 'Compte courrant' },
+        { data: this.listConseillerTotalCompteEpargne,label:'Compte Epargne'}
+    ]
+    this.barChartLabels = this.ListConseillerName;
+    
+  });
+   
+
+ 
+ 
+ 
 }
   
 

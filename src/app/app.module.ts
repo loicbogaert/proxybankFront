@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { HighchartsChartModule } from 'highcharts-angular';
+
 
 import { AppComponent } from './app.component';
 import { IndexConseillerComponent } from './index-conseiller/index-conseiller.component';
@@ -31,6 +31,8 @@ import { ListeClientsComponent } from './components/liste-clients/liste-clients.
 import { InfoPersoClientComponent } from './components/info-perso-client/info-perso-client.component';
 import { InfoComptesClientComponent } from './components/info-comptes-client/info-comptes-client.component';
 import { VirementComponent } from './components/virement/virement.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { VirementComponent } from './components/virement/virement.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HighchartsChartModule
+    BrowserAnimationsModule,
+    NgChartsModule,
+   
  
   ],
   providers: [

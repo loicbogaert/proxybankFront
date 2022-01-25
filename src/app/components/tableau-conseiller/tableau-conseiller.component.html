@@ -1,4 +1,4 @@
-<table class="table table-hover w-100">
+<table class="table table-hover w-100 align-middle text-center bg-light-opacity-75">
     <thead class="table-light">
         <tr>
             <th scope="col">Conseiller</th>
@@ -7,7 +7,7 @@
             <th scope="col">Total compte épargne</th>
         </tr>
     </thead>
-    <tbody c>
+    <tbody>
         <tr scope="row" *ngFor="let conseiller of listConseiller; let i = index;">
             
         <td><a data-bs-toggle="modal" [attr.data-bs-target]="'#m'+ i" >{{conseiller.nom}} {{conseiller.prenom}}</a></td>
@@ -15,14 +15,14 @@
         <td>{{conseiller.totalCompteCourrant}} €</td>
         <td>{{conseiller.totalCompteEpargne}} €</td>
         <div class="modal fade" id="{{'m'+i}}"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header bg-secondary text-white">
                   <h5 class="modal-title " id="exampleModalLabel"><p>Conseiller : {{conseiller.nom}} {{conseiller.prenom}}</p></h5>
                   <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                <table>
+                <div class="modal-body ">
+                <table class="table  ">
                     <thead class="table-light">
                         <tr>
                             <th scope="col">Nom</th>

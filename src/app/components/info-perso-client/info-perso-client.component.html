@@ -1,6 +1,15 @@
-<h3>Informations du client</h3>
+<h3 class="text-center">Informations du client</h3>
 
-<div>
-    <p>Adresse : {{singleClient.adresse}}</p>
-    <p>Code postal : {{singleClient.codePostal}}</p>
+<div class="d-flex flex-column align-items-center justify-content-around h-100 p-3">
+    <div class="d-flex flex-row">
+        <p><span class="fw-bold">adresse : </span> {{singleClient.adresse}}</p>
+    </div>
+
+    <div class="d-flex flex-row">
+        <p> <span class="fw-bold">Code postal :</span> {{singleClient.codePostal}}</p>
+    </div>
+
+    <div class="d-flex flex-row">
+        <p><span class="fw-bold">Telephone :</span> {{singleClient.telephone}}</p>
+    </div>
 </div>

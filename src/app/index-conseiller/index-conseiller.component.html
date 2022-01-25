@@ -1,18 +1,18 @@
   <!--Conteneur des 3 divs info client-->
-    <div class="d-flex flex-column">
-        <div class="d-flex flex-row">
+    <div class="d-flex flex-column min-vh-100 p-5 justify-content-around">
+        <div class="d-flex flex-row justify-content-around h-100">
             <!--Composant avec liste des clients-->
-            <app-liste-clients class="border rounded border-dark p-2 m-2" [clients]="clients" (clientId)="getId($event)"></app-liste-clients>
+            <app-liste-clients class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light w-50 d-block" [clients]="clients" (clientId)="getId($event)"></app-liste-clients>
             <!--composant info persos-->
-            <app-info-perso-client class="border rounded border-dark p-2 m-2" [singleClient]="singleClient" ></app-info-perso-client>
+            <app-info-perso-client class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light w-50 d-block" [singleClient]="singleClient" ></app-info-perso-client>
         </div>
 
 
-        <div class="d-flex flex-row">
+        <div class="d-flex flex-row justify-content-around">
             <!--composant info compte et carte-->
-            <app-info-comptes-client class="border rounded border-dark p-2 m-2" [cartes]="cartes" [comptes]="comptes" [singleClient]="singleClient"></app-info-comptes-client>
+            <app-info-comptes-client class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light m-2 w-50" [cartes]="cartes" [comptes]="comptes" [singleClient]="singleClient"></app-info-comptes-client>
 
             <!--composant pour faire un virement d'un compte a un autre-->
-            <app-virement class="border rounded border-dark p-2 m-2" [singleClient]="singleClient" [clients]="clients"></app-virement>
+            <app-virement class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 bg-light m-2 w-50" [singleClient]="singleClient" [clients]="clients"></app-virement>
         </div>
     </div>

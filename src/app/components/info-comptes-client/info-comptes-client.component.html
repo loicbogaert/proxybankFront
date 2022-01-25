@@ -1,22 +1,22 @@
-<h3>Comptes du client</h3>
+<h3 class="text-center">Comptes du client</h3>
 
-<div class="d-flex flex-row" >
+<div class="d-flex flex-row align-items-center justify-content-around">
     <div class="d-flex flex-row">
-        <div *ngFor="compte of comptes let i = index">
+        <div *ngFor="compte of comptes let i = index" class="border-end p-2">
         
                 <!--Compte Actif ou Comte Courrant-->
                 <h5 *ngIf="comptes[i].autorisationDecouverte > 0">Compte Courrant</h5>
                 <h5 *ngIf="comptes[i].autorisationDecouverte == undefined">Compte Epargne</h5>
             <p>Numéro de compte : {{comptes[i].numeroDeCompte}}</p>
             <p>Solde du compte : {{comptes[i].solde}} €</p>
-            <p>Date d'ouverture du compte : {{comptes[i].dateOuverture}}</p>
+            <p>Date d'ouverture : {{comptes[i].dateOuverture}}</p>
         </div>
     </div>
     
     <div>
         <h5>Infos de cartes</h5>
         <div *ngFor="carte of cartes let i = index">
-            <h5>Carte {{i+1}}</h5>
+            <p>Carte n° {{i+1}}</p>
             <p>Numero de carte: {{cartes[i].numero}} </p>
             <p>Type de carte: {{cartes[i].typeCarte}}  </p>
         

@@ -45,6 +45,14 @@ export class AgencesService {
       );
     };
 
+    /**XXXXXXXXXXXXXXXXXXXXXXX Associer directeur a une Agence XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+    associeteDirecteurToAgence(agenceId:number, directeurId:number, agence:Agence){
+      const url = `${this.BASE_URL}/${agenceId}/associer/${directeurId}`
+      return this.http.put<Agence>(url, agence).pipe(
+        map(res => console.log(url))
+      );
+    };
 
 }
 

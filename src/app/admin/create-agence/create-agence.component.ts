@@ -19,7 +19,7 @@ export class CreateAgenceComponent implements OnInit {
 
   ngOnInit(): void {
     this.agenceForm = this.formBuilder.group({
-      agenceName: ['', [Validators.required]],
+      agenceName: ["", [Validators.required, Validators.minLength(4)]],
     });
   }
 
@@ -41,7 +41,7 @@ export class CreateAgenceComponent implements OnInit {
       }
     );
   }
-  get agenceName() {
+  get f() {
     return this.agenceForm.get('agenceName');
   }
 

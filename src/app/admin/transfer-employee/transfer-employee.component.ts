@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Conseiller } from '../../model/conseiller.model';
 import { Agence } from 'src/app/model/agence.model';
@@ -11,8 +11,9 @@ import { EmployeesService } from 'src/app/services/employees.service';
   styleUrls: ['./transfer-employee.component.css']
 })
 export class TransferEmployeeComponent implements OnInit {
+  @Input() listeAgences:Agence[]= [];
   transferForm = {} as FormGroup;
-  agences:Agence[] = [];
+  //agences:Agence[] = [];
   conseillers: Conseiller[]= [];
   agenceId!: number;
   employeId!: number;
@@ -21,19 +22,15 @@ export class TransferEmployeeComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private agencesService: AgencesService, private employeService:EmployeesService) { }
 
   ngOnInit(): void {
-    this.getAgences();
+   // this.getAgences();
     this.getConseillers();
     this.transferForm = this.formBuilder.group({
-      employeSelected: [[Validators.required]],
-      agenceSelected: [[Validators.required]]
+      employeSelected: [null, [Validators.required]],
+      agenceSelected: [null, [Validators.required]]
     });
   }
 
-  getAgences(){
-    return this.agencesService.getAgences().subscribe((data)=>{
-      this.agences = data;
-    })
-  }
+
 
   getConseillers(){
     return this.employeService.getConseillers().subscribe((data:any)=>{

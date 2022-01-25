@@ -1,3 +1,4 @@
+import { Agence } from "./agence.model";
 import { Client } from "./client.model";
 export interface Conseiller{
     id:number;
@@ -9,6 +10,7 @@ export interface Conseiller{
     nbClients:number;
     totalCompteCourrant:number;
     totalCompteEpargne:number;
+    agence:Agence;
 
 
 }

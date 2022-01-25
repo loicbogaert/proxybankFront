@@ -38,4 +38,12 @@ export class EmployeesService {
       return this.directeurs;
     }))
   }
+
+  public getDirectorsNoAgency():Observable<any> {
+    const url = `${this.BASE_URL}directeurs/check/noagency`;
+    return this.http.get<any>(url).pipe(map((data:any)=>{
+      this.directeurs = data;
+      return this.directeurs;
+    }))
+  }
 }

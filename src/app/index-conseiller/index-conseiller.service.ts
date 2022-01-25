@@ -21,7 +21,7 @@ export class IndexConseillerService {
   
   //Récupérer l'id du dit conseiller et l'entrer dynamiquement dans l'url au lieu d'un nombre dans l'url :  ({id})
   readonly API_URL : string = 'http://localhost:8080/conseillers/9';
-  readonly CLIENT_URL: string = 'http://localhost:8080/clients';
+  readonly CLIENT_URL: string = 'http://localhost:8080/clients/';
   readonly FULL_REGISTER_URL: string = 'http://localhost:8080/clients/fullregister/';
 
   constructor(private http : HttpClient) { }
@@ -49,8 +49,8 @@ export class IndexConseillerService {
     return this.http.get(`${this.CLIENT_URL}`, httpOptions);
   }
 
-  modifyClient(client: Client, id:string) {
-    return this.http.put(`${this.CLIENT_URL}${id}`, httpOptions)
+  modifyClient(client: Client, id:number) {
+    return this.http.put<Client>(`${this.CLIENT_URL}${id}`, client, httpOptions).subscribe()
   }
 
   fullRegisterClient(nom: string, prenom: string, adresse: string, codePostal: number, telephone: string, numeroCompteCourrant: number, 

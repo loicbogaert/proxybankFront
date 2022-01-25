@@ -71,8 +71,11 @@ export class ListeClientsComponent implements OnInit {
     this.clientId.emit(id);
   }
 
- public formUpdateClient() {
-    //this.clientModify = this.
+ public formUpdateClient(id: any) {
+    this.modifiedClient = this.clientModify.value;
+    console.log(this.clientModify.value)
+    console.log(this.modifiedClient)
+    this.service.modifyClient(this.modifiedClient, id);
   }
   
 

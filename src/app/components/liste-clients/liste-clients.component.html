@@ -45,35 +45,40 @@
                          </div>
                         <div class="modal-body">
 
-                             <form >
+                             <form [formGroup]="clientModify">
                                  <div class="d-flex flex-column align-items-center">
                                     <label>Nom</label>
-                                    <input type="text" value="{{clients[i].nom}}" class="w-100">
+                                    <input type="text" value="{{clients[i].nom}}" class="form-control w-100"
+                                    formControlName="nom" id="nom" name="nom" required>
                                  </div>
 
                                  <div class="d-flex flex-column align-items-center">
                                     <label>Prénom</label>
-                                    <input type="text" value="{{clients[i].prenom}}" class="w-100">
+                                    <input type="text" value="{{clients[i].prenom}}" class="w-100"
+                                    formControlName="prenom" id="prenom" name="prenom" required>
                                 </div>
 
                                 <div class="d-flex flex-column align-items-center">
                                     <label>Adresse</label>
-                                    <input type="text" value="{{clients[i].adresse}}" class="w-100">
+                                    <input type="text" value="{{clients[i].adresse}}" class="w-100"
+                                    formControlName="adresse" id="adresse" name="adresse" required>
                                 </div>
 
                                 <div class="d-flex flex-column align-items-center">
                                     <label>Code postal</label>
-                                    <input type="text" value="{{clients[i].codePostal}}" class="w-100">
+                                    <input type="text" value="{{clients[i].codePostal}}" class="w-100"
+                                    formControlName="codePostal" id="codePostal" name="codePostal" required>
                                 </div>
 
                                 <div class="d-flex flex-column align-items-center">
                                     <label>Téléphone</label>
-                                    <input type="text" value="{{clients[i].telephone}}" class="w-100">
+                                    <input type="text" value="{{clients[i].telephone}}" class="w-100"
+                                    formControlName="telephone" id="telephone" name="telephone" required>
                                 </div>
                         </form>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" (click)="formUpdateClient()">Sauvegarder les modifications</button>
+                        <button type="button" class="btn btn-primary" (click)="formUpdateClient(client.id)">Sauvegarder les modifications</button>
                         </div>
                     </div>
                     </div>

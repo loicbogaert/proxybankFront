@@ -1,8 +1,9 @@
 export interface Compte{
     id:number;
+    autorisationDecouvert:number;
     tauxRemuneration:number;
     autorisationDecouverte:number;
     dateOuverture:string;
-    numeroDeCompte:number;
-    solde:number
+    solde: number;
+    numeroDeCompte: number;
 }

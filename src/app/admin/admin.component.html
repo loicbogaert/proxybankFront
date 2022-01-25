@@ -1,11 +1,13 @@
-<div class="container">
-  <div class="row">
-    <app-create-agence></app-create-agence>
-  </div>
-  <div class="row">
-    <app-association-director-bank [listeAgences]="agences"></app-association-director-bank>
-  </div>
-  <div class="row">
-    <app-transfer-employee [listeAgences]="agences"></app-transfer-employee>
+<div class="min-vh-100 p-5 bg">
+  <div class="container-fluid">
+    <div class="row p-3 bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light d-block">
+      <app-create-agence></app-create-agence>
+    </div>
+    <div class="row p-3 bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light d-block" >
+      <app-association-director-bank [listeAgences]="agences"></app-association-director-bank>
+    </div>
+    <div class="row p-3 bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light d-block">
+      <app-transfer-employee [listeAgences]="agences"></app-transfer-employee>
+    </div>
   </div>
 </div>

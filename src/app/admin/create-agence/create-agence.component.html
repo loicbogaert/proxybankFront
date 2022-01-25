@@ -1,5 +1,5 @@
-<div>
-  <h2 class="d-flex justify-content-center">CREATION D'UNE AGENCE</h2>
+
+  <h2 class="d-flex justify-content-center mb-3">CREATION D'UNE AGENCE</h2>
   <form [formGroup]="agenceForm" (ngSubmit)="onFormSubmit()">
     <div class="row mb-3">
       <label for="agenceName" class="col-sm-2 col-form-label">Agence</label>
@@ -11,5 +11,3 @@
       <button class="btn btn-primary" type="submit" [disabled]="!agenceForm.valid">Créer</button>
     </div>
   </form>
-
-</div>

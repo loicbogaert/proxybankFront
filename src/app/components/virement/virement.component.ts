@@ -17,8 +17,15 @@ export class VirementComponent implements OnInit {
   comptesCourrant!: Compte[];
 
   @Input() list: string[] = [];
-    // two way binding for input text
+    // input combo box to get compte recepteur
     inputItem = '';
+
+    //get montant du virement
+    montantVirement: number = 0;
+
+    // get compte Emetteur
+    compteEmetteur!: any;
+
     // enable or disable visiblility of list
     listHidden = true;
     selectedIndex = -1;
@@ -36,17 +43,16 @@ export class VirementComponent implements OnInit {
       for(let i = 0; i < this.allClients.length; i++) {
         if(this.allClients[i].compteCourrant) {
           this.list.push(
-            (this.allClients[i].nom + " " + this.allClients[i].prenom + " - " + this.allClients[i].compteCourrant.numeroDeCompte.toString() + " - Compte Courrant")
+            (this.allClients[i].nom + " " + this.allClients[i].prenom + " - " + this.allClients[i].compteCourrant.numeroDeCompte.toString() + " - Compte Courrant" + " " + this.allClients[i].compteCourrant.id)
           );
         }
        
         if(this.allClients[i].compteEpargne) {
           this.list.push(
-            (this.allClients[i].nom + " " + this.allClients[i].prenom +  " - " + this.allClients[i].compteEpargne.numeroDeCompte.toString() + " - Compte Epargne")
+            (this.allClients[i].nom + " " + this.allClients[i].prenom +  " - " + this.allClients[i].compteEpargne.numeroDeCompte.toString() + " - Compte Epargne" + " " + this.allClients[i].compteEpargne.id) 
           );
         }
       }
-      console.log(this.list)
     })
 
     // combobox liste filtrée
@@ -82,5 +88,11 @@ export class VirementComponent implements OnInit {
               } 
           }, 500);
       }
+  }
+
+  /**Fonction de virement */
+
+  virement() {
+   this.service.virement(this.montantVirement, parseInt(this.compteEmetteur), parseInt(this.inputItem.substring(this.inputItem.lastIndexOf(" ")+1, this.inputItem.length))).subscribe();
   }
 }

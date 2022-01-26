@@ -1,18 +1,18 @@
-  <!--Conteneur des 3 divs info client-->
-    <div class="d-flex flex-column min-vh-100 p-5 justify-content-around">
-        <div class="d-flex flex-row justify-content-around h-100">
+     <div class="d-flex flex-row pt-5">
+        <div class="d-flex col">
             <!--Composant avec liste des clients-->
-            <app-liste-clients class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light w-50 d-block" [clients]="clients" (clientId)="getId($event)"></app-liste-clients>
-            <!--composant info persos-->
-            <app-info-perso-client class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light w-50 d-block" [singleClient]="singleClient" ></app-info-perso-client>
+            <app-liste-clients class="main-components bg-light-opacity-75 p-3 m-3 border shadow rounded-3  w-100 d-block" [clients]="clients" (clientId)="getId($event)"></app-liste-clients>
         </div>
 
 
-        <div class="d-flex flex-row justify-content-around">
+        <div class="d-flex flex-column justify-content-center col">
+            <!--composant info persos-->
+            <app-info-perso-client class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-3 d-block" [singleClient]="singleClient" ></app-info-perso-client>
+
             <!--composant info compte et carte-->
-            <app-info-comptes-client class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-2 bg-light m-2 w-50" [cartes]="cartes" [comptes]="comptes" [singleClient]="singleClient"></app-info-comptes-client>
+            <app-info-comptes-client class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-3" [cartes]="cartes" [comptes]="comptes" [singleClient]="singleClient"></app-info-comptes-client>
 
             <!--composant pour faire un virement d'un compte a un autre-->
-            <app-virement class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 bg-light m-2 w-50" [singleClient]="singleClient" [clients]="clients"></app-virement>
+            <app-virement class="main-components bg-light-opacity-75 p-3 border shadow rounded-3 m-3" [singleClient]="singleClient" [clients]="clients"></app-virement>
         </div>
     </div>

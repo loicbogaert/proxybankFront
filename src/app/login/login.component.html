@@ -18,8 +18,11 @@
                 id="password"
                 name="password"
                 placeholder="Entrez votre mot de passe"
-                required>
+                required ngClass="{'is-invalide': submited && !connexion}">
             </div>
+            <span *ngIf="submited && !connexion" class="d-flex flex-column text-danger">
+              vos identifiants sont peut-être erronés!
+            </span>
         </div>
 
     <div>

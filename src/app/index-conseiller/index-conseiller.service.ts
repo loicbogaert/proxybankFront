@@ -23,6 +23,7 @@ export class IndexConseillerService {
   readonly API_URL : string = 'http://localhost:8080/conseillers/9';
   readonly CLIENT_URL: string = 'http://localhost:8080/clients/';
   readonly FULL_REGISTER_URL: string = 'http://localhost:8080/clients/fullregister/';
+  readonly VIREMENT_URL: string = 'http://localhost:8080/virement'
 
   constructor(private http : HttpClient) { }
 
@@ -49,13 +50,44 @@ export class IndexConseillerService {
     return this.http.get(`${this.CLIENT_URL}`, httpOptions);
   }
 
-  modifyClient(client: Client, id:number) {
-    return this.http.put<Client>(`${this.CLIENT_URL}${id}`, client, httpOptions).subscribe()
+  modifyClient(clientObjet: any, id:number) {
+    const obj = {
+      nom: clientObjet.addClient.nom,
+      prenom:clientObjet.addClient.prenom,
+      adresse:clientObjet.addClient.adresse,
+      telephone:clientObjet.addClient.telephone,
+      codePostal:clientObjet.addClient.codePostal,
+      numeroCompteCourrant:clientObjet.addCompteCourrant.numero, 
+      soldeCompteCourrant:clientObjet.addCompteCourrant.solde, 
+      soldeCompteEpargne:clientObjet.addCompteEpargneModify.solde, 
+      numeroCompteEpargne:clientObjet.addCompteEpargneModify.numero, 
+      numeroDeCarte:clientObjet.addCarteModify.numero, 
+      typeDeCarte:clientObjet.addCarteModify.typeCarte
+    }
+
+    return this.http.put<Client>(`${this.CLIENT_URL}${id}`, obj, httpOptions).subscribe()
   }
 
-  fullRegisterClient(nom: string, prenom: string, adresse: string, codePostal: number, telephone: string, numeroCompteCourrant: number, 
-    soldeCompteCourrant: number, soldeCompteEpargne: number, numeroCompteEpargne: number, numeroDeCarte: string, typeDeCarte: string) {
-      return this.http.post(`${this.FULL_REGISTER_URL}`, {nom, prenom, adresse, codePostal, telephone, numeroCompteCourrant, 
-        soldeCompteCourrant, soldeCompteEpargne, numeroCompteEpargne, numeroDeCarte, typeDeCarte}, httpOptions);
+
+  fullRegisterClient(clientObjet : any) {
+    const obj = {
+    nom: clientObjet.addClient.nom,
+    prenom:clientObjet.addClient.prenom,
+    adresse:clientObjet.addClient.adresse,
+    telephone:clientObjet.addClient.telephone,
+    codePostal:clientObjet.addClient.codePostal,
+    numeroCompteCourrant:clientObjet.addCompteCourrant.numero, 
+    soldeCompteCourrant:clientObjet.addCompteCourrant.solde, 
+    soldeCompteEpargne:clientObjet.addCompteEpargneModify.solde, 
+    numeroCompteEpargne:clientObjet.addCompteEpargneModify.numero, 
+    numeroDeCarte:clientObjet.addCarteModify.numero, 
+    typeDeCarte:clientObjet.addCarteModify.typeCarte
+    }
+      return this.http.post<any>(`${this.FULL_REGISTER_URL}`, obj, httpOptions);
+  }
+
+  virement(montant: number ,idEmetteur : number, idRecepteur: number) {
+    console.log({montant, idEmetteur, idRecepteur})
+    return this.http.put<any>(`${this.VIREMENT_URL}`, {montant, idEmetteur, idRecepteur}, httpOptions);
   }
 }

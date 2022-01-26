@@ -12,14 +12,32 @@ import { Carte } from 'src/app/model/carte.model';
 })
 export class ListeClientsComponent implements OnInit {
 
+  /*Modification du client form*/
   clientModify : FormGroup = this.fb.group({
-    nom :  ['', Validators.required],
-    prenom :   ['', Validators.required], 
-    adresse :   ['', Validators.required], 
-    codePostal :  ['', Validators.required], 
-    telephone :   ['', Validators.required], 
+    nom :  ["", Validators.required],
+    prenom :   ["", Validators.required], 
+    adresse :   ["", Validators.required], 
+    codePostal :  ["", Validators.required], 
+    telephone :   ["", Validators.required], 
   })
 
+  modifiedCompteCourrant : FormGroup = this.fb.group({
+    numero :   ['', Validators.required], 
+    solde :   ['', Validators.required], 
+  })
+
+  modifiedCompteEpargne : FormGroup = this.fb.group({
+    numero :   ['', Validators.required], 
+    solde :   ['', Validators.required], 
+  })
+
+  modifiedCarte : FormGroup = this.fb.group({
+    numero :   ['', Validators.required], 
+    typeCarte :   ['', Validators.required], 
+  })
+
+
+  /**Ajout du client form*/
   addClient : FormGroup = this.fb.group ({
     nom :   ['', Validators.required], 
     prenom :   ['', Validators.required], 
@@ -52,7 +70,7 @@ export class ListeClientsComponent implements OnInit {
   carteActuelle! : Carte;
 
   fullRegisterClient! : any;
-  modifiedClient! : Client;
+  modifiedClient! : any;
 
   constructor(private service: IndexConseillerService,
               private fb: FormBuilder
@@ -71,19 +89,18 @@ export class ListeClientsComponent implements OnInit {
     this.clientId.emit(id);
   }
 
+  /*Requete service modify client*/
  public formUpdateClient(id: any) {
-    this.modifiedClient = this.clientModify.value;
-    console.log(this.clientModify.value)
-    console.log(this.modifiedClient)
-    this.service.modifyClient(this.modifiedClient, id);
+    this.modifiedClient = {modifClient : this.clientModify.value, modifCompteCourrant: this.modifiedCompteCourrant.value, modifCompteEpargne: this.modifiedCompteEpargne, modifCarte : this.modifiedCarte};
+    this.service.modifyClient(this.modifiedClient , id);
   }
   
 
+  /**Requete service ajout d'un client */
  public addClientForm(){
-   this.fullRegisterClient = this.addClient.value, this.compteCourrantModify.value, this.compteEpargneModify.value, this.carteModify.value;
-
-  this.service.fullRegisterClient(this.fullRegisterClient.nom, this.fullRegisterClient.prenom, this.fullRegisterClient.adresse, this.fullRegisterClient.codePostal, this.fullRegisterClient.telephone, this.fullRegisterClient.numeroCompteCourrant, 
-    this.fullRegisterClient.soldeCompteCourrant, this.fullRegisterClient.soldeCompteEpargne, this.fullRegisterClient.numeroCompteEpargne, this.carteModify.value.typeCarte, this.carteModify.value.numero).subscribe(data=> {
+   this.fullRegisterClient = {addClient: this.addClient.value, addCompteCourrant: this.compteCourrantModify.value, addCompteEpargneModify : this.compteEpargneModify.value, addCarteModify : this.carteModify.value};
+    
+  this.service.fullRegisterClient(this.fullRegisterClient).subscribe(data=> {
   })
   }
 }

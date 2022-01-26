@@ -28,7 +28,6 @@ export class IndexConseillerComponent implements OnInit{
     this.singleClient = this.clients[this.clientId]
     this.comptes = [this.clients[this.clientId].compteCourrant, this.clients[this.clientId].compteEpargne];
     this.cartes = this.clients[this.clientId].cartes;
-    console.log(this.cartes)
   }
 
   ngOnInit(): void {

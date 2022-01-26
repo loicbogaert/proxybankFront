@@ -1,5 +1,5 @@
 
-<h2>Virement d'un compte à un autre</h2>
+<h2 class="text-center mb-5">Virement d'un compte à un autre</h2>
 
     <div class="d-flex flex-column">
         <div class="d-flex flex-row justify-content-around w-100">
@@ -7,25 +7,20 @@
             <div>
                 <p class="fw-bold">Compte donneur</p>
                 <div *ngIf = "singleClient">
-                    <input name="compte" type="radio" value="{{singleClient.compteCourrant.id}}"/>
+                    <input name="compte" type="radio" value="{{singleClient.compteCourrant.id}}" [(ngModel)]="compteEmetteur"/>
                     <label>Compte Courrant</label>
                 </div>
                 <div *ngIf = "singleClient">
-                    <input name="compte" type="radio" value="{{singleClient.compteEpargne.id}}"/>
+                    <input name="compte" type="radio" value="{{singleClient.compteEpargne.id}}" [(ngModel)]="compteEmetteur"/>
                     <label>Compte Epargne</label>
                 </div>
 
-                <!--Cas ou aucun client n'est selectionné-->
-             <!--  <div *ngIf = "singleClient == undefined">
-                    <p>(Selectionner un client)</p>
-                </div>
-            --> 
             </div>
 
             <div>
                 <div class="d-flex flex-column">
-                    <p>Montant du virement</p>
-                    <input type="number" placeholder="entrez le montant du virement">
+                    <p class="fw-bold">Montant du virement</p>
+                    <input type="text" placeholder="entrez le montant du virement" value="" [(ngModel)]="montantVirement">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#virement">Confirmer le virement</button>
                 </div>
             </div>
@@ -54,9 +49,6 @@
         </div>
     </div>
 
-
-
-
 <!--Modal de confirmation de virement-->
 <div class="modal fade" id="virement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -71,7 +63,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Oui</button>
+      
+ <!--(click)="virement()"-->    <button (click)="virement()" type="button" class="btn btn-primary">Oui</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
             </div>
         </div>

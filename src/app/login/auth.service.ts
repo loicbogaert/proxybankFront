@@ -11,7 +11,6 @@ readonly ROOT: string = "http://localhost:8080";
 readonly API_URL: string = "http://localhost:8080/auth/signin";
 
   constructor(private http: HttpClient) {
-
    }
 
   login(username: string, password:string): Observable<any> {

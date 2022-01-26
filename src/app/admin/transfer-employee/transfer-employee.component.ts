@@ -15,7 +15,7 @@ export class TransferEmployeeComponent implements OnInit {
   @Input() listeAgences:Agence[]= [];
   transferForm = {} as FormGroup;
   //agences:Agence[] = [];
-  
+
   conseillers: Conseiller[]= [];
   agences: any[] = [];
   mesConseillers: transfertEmploye[]=[];
@@ -39,9 +39,9 @@ export class TransferEmployeeComponent implements OnInit {
      this.agences = agences;
      this.agences.forEach(agence=>{
       // console.log('idAgence:'+agence.id , agence.agenceName);
-     
+
        agence.listConseiller.forEach((conseiller:any) => {
-         console.log('idAgence:'+agence.id , agence.agenceName+' idconseiller: '+conseiller.id,conseiller.nom,conseiller.prenom)
+         //console.log('idAgence:'+agence.id , agence.agenceName+' idconseiller: '+conseiller.id,conseiller.nom,conseiller.prenom)
          this.monConseiller={
           agenceId:0,
           agenceName:'',
@@ -49,21 +49,21 @@ export class TransferEmployeeComponent implements OnInit {
           conseillerPrenom:'',
           conseillerId:0
         };
-         
-        
+
+
          this.monConseiller.agenceId = agence.id;
-         console.log( this.monConseiller.agenceId)
+        // console.log( this.monConseiller.agenceId)
           this.monConseiller.agenceName=agence.agenceName;
          this.monConseiller.conseillerId=conseiller.id;
          this.monConseiller.conseillerNom=conseiller.nom;
          this.monConseiller.conseillerPrenom=conseiller.prenom;
          this.mesConseillers.push(this.monConseiller);
-        
-        
+
+
        });
-       console.log(this.mesConseillers)
+      // console.log(this.mesConseillers)
      })
-    
+
     });
   }
 
@@ -78,9 +78,8 @@ export class TransferEmployeeComponent implements OnInit {
   onTransferFormSubmit(){
     this.agence = this.transferForm.value.agenceSelected;
     this.agenceId=this.transferForm.value.agenceSelected.id;
-    this.employeId=this.transferForm.value.employeSelected.id;
+    this.employeId=this.transferForm.value.employeSelected;
     this.agencesService.transferConseiller(this.agenceId, this.employeId, this.agence).subscribe();
-
   }
 
 }

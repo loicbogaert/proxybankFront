@@ -8,7 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [
-  {path: "conseiller", component: IndexConseillerComponent},
+  {path: "conseiller/:id", component: IndexConseillerComponent},
   {path: "login", component : LoginComponent},
   {path: "signup", component : SignupComponent},
   {path:"directeur",component: IndexDirecteurComponent},

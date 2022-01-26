@@ -14,9 +14,13 @@
                     id="nom"
                     name="nom"
                     placeholder="Entrez votre nom"
-                    required>
+                    required
+                    [ngClass]="{ 'is-invalid': !myForm.controls['nom'].valid && myForm.controls['nom'].touched }">
+                    <div class="invalid-feedback" *ngIf="!myForm.controls['nom'].valid && myForm.controls['nom'].touched">
+                      <div *ngIf="myForm.controls['nom'].errors?.['required']"> Le nom est obligatoire</div>
+                    </div>
                 </div>
-    
+
                 <div class="d-flex flex-column align-items-center">
                     <label>Prénom</label>
                     <input type="text" formControlName="prenom"
@@ -24,9 +28,13 @@
                     id="prenom"
                     name="prenom"
                     placeholder="Entrez votre prénom"
-                    required>
+                    required
+                    [ngClass]="{ 'is-invalid': !myForm.controls['prenom'].valid && myForm.controls['prenom'].touched }">
+                    <div class="invalid-feedback" *ngIf="!myForm.controls['prenom'].valid && myForm.controls['prenom'].touched">
+                      <div *ngIf="myForm.controls['prenom'].errors?.['required']"> Le prénom est obligatoire</div>
+                    </div>
                 </div>
-    
+
                 <div class="d-flex flex-column align-items-center">
                     <label>Nom d'utilisateur</label>
                     <input type="text" formControlName="username"
@@ -34,10 +42,14 @@
                     id="username"
                     name="username"
                     placeholder="Entrez votre nom d'utilisateur"
-                    required>
+                    required
+                    [ngClass]="{ 'is-invalid': !myForm.controls['username'].valid && myForm.controls['username'].touched }">
+                    <div class="invalid-feedback" *ngIf="!myForm.controls['username'].valid && myForm.controls['username'].touched">
+                      <div *ngIf="myForm.controls['username'].errors?.['required']"> Le username est obligatoire</div>
+                    </div>
                 </div>
             </div>
-            
+
             <!--Place pour le logo-->
             <div class="col-md row-sm d-flex flex-column justify-content-center mt-md-3 mx-md-3 mb-md-3 logo-container align-items-center">
                 <img src="../../assets/img/proxybank.png" class="logo">
@@ -52,9 +64,14 @@
                     id="email"
                     name="email"
                     placeholder="Entrez votre adresse email"
-                    required>
+                    required
+                    [ngClass]="{ 'is-invalid': !myForm.controls['email'].valid && myForm.controls['email'].touched }">
+                    <div class="invalid-feedback" *ngIf="!myForm.controls['email'].valid && myForm.controls['email'].touched">
+                      <div *ngIf="myForm.controls['email'].errors?.['required']"> L'email' est obligatoire</div>
+                      <div *ngIf="myForm.controls['email'].errors?.['email']">Le format d'email n'est pas valable </div>
+                    </div>
                 </div>
-           
+
                 <div class="d-flex flex-column align-items-center">
                     <label>Mot de passe</label>
                     <input type="password" formControlName="password"
@@ -62,9 +79,13 @@
                     id="password"
                     name="password"
                     placeholder="Entrez votre mot de passe"
-                    required>
+                    required
+                    [ngClass]="{ 'is-invalid': !myForm.controls['password'].valid && myForm.controls['password'].touched }">
+                    <div class="invalid-feedback" *ngIf="!myForm.controls['password'].valid && myForm.controls['password'].touched">
+                      <div *ngIf="myForm.controls['password'].errors?.['required']"> Le mot de passe est obligatoire</div>
+                    </div>
                 </div>
-    
+
                 <div class="d-flex flex-column align-items-center">
                     <label>Mot de passe (vérification)</label>
                     <input type="password" formControlName="passwordVerif"
@@ -72,12 +93,19 @@
                     id="passwordVerif"
                     name="passwordVerif"
                     placeholder="Entrez votre mot de passe"
-                    required>
+                    required
+                    [ngClass]="{ 'is-invalid': !myForm.controls['passwordVerif'].valid && myForm.controls['passwordVerif'].touched }">
+                    <div class="invalid-feedback" *ngIf="!myForm.controls['passwordVerif'].valid && myForm.controls['passwordVerif'].touched">
+                      <div *ngIf="myForm.controls['passwordVerif'].errors?.['required']"> La confirmation du mot de passe est obligatoire</div>
+                    </div>
                 </div>
             </div>
 
             <!--Bouton de validation du form-->
-        </div>
+          </div>
+          <span *ngIf="submited && !isSaved" class="row-sm d-flex flex-column justify-content-center mt-md-3 mx-md-3 mb-md-3  align-items-center text-danger">
+            {{messageError}}
+          </span>
             <div>
                 <button class="btn-form-1 mt-md-5 mt-2"
                 (click)="signup()" [disabled]="!myForm.valid">S'INSCRIRE</button>

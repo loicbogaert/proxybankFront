@@ -19,6 +19,9 @@ const httpOptions= {
 export class AgencesService {
  agences: Agence[] = [];
  readonly BASE_URL: string = `${environment.api}`+"agences";
+
+ agence_URL : string = `http://localhost:8080/agences/`;
+
   constructor(private http: HttpClient) {
     this.getAgences();
    }
@@ -30,6 +33,9 @@ export class AgencesService {
       return this.agences;
     }))
   }
+public mesAgence():Observable<any>{
+  return this.http.get(this.agence_URL).pipe(map((data:any)=>data));
+}
 
   /**XXXXXXXXXXXXXXXXXXXXXXX Create Agence XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
       creationAgence(agence: Agence): Observable<Agence> {

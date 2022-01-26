@@ -4,6 +4,7 @@ import { Conseiller } from '../../model/conseiller.model';
 import { Agence } from 'src/app/model/agence.model';
 import { AgencesService } from 'src/app/services/agences.service';
 import { EmployeesService } from 'src/app/services/employees.service';
+import { transfertEmploye } from 'src/app/model/transfertEmploye.model';
 
 @Component({
   selector: 'app-transfer-employee',
@@ -14,7 +15,11 @@ export class TransferEmployeeComponent implements OnInit {
   @Input() listeAgences:Agence[]= [];
   transferForm = {} as FormGroup;
   //agences:Agence[] = [];
+  
   conseillers: Conseiller[]= [];
+  agences: any[] = [];
+  mesConseillers: transfertEmploye[]=[];
+  monConseiller!:transfertEmploye;
   agenceId!: number;
   employeId!: number;
   agence!: Agence;
@@ -27,6 +32,38 @@ export class TransferEmployeeComponent implements OnInit {
     this.transferForm = this.formBuilder.group({
       employeSelected: [null, [Validators.required]],
       agenceSelected: [null, [Validators.required]]
+    });
+
+    this.agencesService.mesAgence().subscribe((agences:any)=>{
+     console.log(agences)
+     this.agences = agences;
+     this.agences.forEach(agence=>{
+      // console.log('idAgence:'+agence.id , agence.agenceName);
+     
+       agence.listConseiller.forEach((conseiller:any) => {
+         console.log('idAgence:'+agence.id , agence.agenceName+' idconseiller: '+conseiller.id,conseiller.nom,conseiller.prenom)
+         this.monConseiller={
+          agenceId:0,
+          agenceName:'',
+          conseillerNom:'',
+          conseillerPrenom:'',
+          conseillerId:0
+        };
+         
+        
+         this.monConseiller.agenceId = agence.id;
+         console.log( this.monConseiller.agenceId)
+          this.monConseiller.agenceName=agence.agenceName;
+         this.monConseiller.conseillerId=conseiller.id;
+         this.monConseiller.conseillerNom=conseiller.nom;
+         this.monConseiller.conseillerPrenom=conseiller.prenom;
+         this.mesConseillers.push(this.monConseiller);
+        
+        
+       });
+       console.log(this.mesConseillers)
+     })
+    
     });
   }
 

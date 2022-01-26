@@ -16,9 +16,8 @@
                     <tr *ngFor = "let client of clients let i=index" (click)="giveId(i)">
                         <td class=" text-center align-middle">{{client.prenom}}</td>
                         <td class=" text-center align-middle">{{client.prenom}}</td>
-                        <td class="text-center"> <button  type="button" class="btn btn-primary m-1" data-bs-toggle="modal" [attr.data-bs-target]="'#idClientModif' + i" >Modifier</button></td>
+                        <td class="text-center"> <button  type="button" class="btn btn-primary m-1" data-bs-toggle="modal" [attr.data-bs-target]="'#idClientModif' + i" (clic)="giveId(i)">Modifier</button></td>
                         <td class="text-center"> <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" [attr.data-bs-target]="'#idClientSuppr' + i" >X</button>   </td>
-                       
                     </tr>
                 </tbody>
             </table>
@@ -47,79 +46,81 @@
                     </div>
                 </div>
             
-
+                        <!--modal de modification du client-->
                 <div class="modal fade" id="{{'idClientModif'+i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                         <h5 class="modal-title text-center w-100" id="exampleModalLabel">Modification des informations du client</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                          </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex flex-row justify-content-between">
                              <form [formGroup] = "clientModify">
+                                <h5 class="text-center">Modification du client</h5>
                                  <div class="d-flex flex-column align-items-center">
                                     <label>Nom</label>
-                                    <input type="text" value="{{clients[i].prenom}}" class="w-100"
+                                    <input type="text" class="w-100"
                                     formControlName="nom" class="form-control" id="nom" name="nom" placeholder="Nom du client" required>
                                  </div>
 
                                  <div class="d-flex flex-column align-items-center">
                                     <label>Prénom</label>
-                                    <input type="text" value="{{clients[i].prenom}}" class="w-100"
-                                    formControlName="prenom" class="form-control" id="prenom" name="prenom" placeholder="Prénom du client" required>
+                                    <input type="text" class="w-100"
+                                    formControlName="prenom" class="form-control" id="prenom" name="prenom" placeholder="Prenom du client" required>
                                 </div>
 
                                 <div class="d-flex flex-column align-items-center">
                                     <label>Adresse</label>
-                                    <input type="text" value="{{clients[i].adresse}}" class="w-100"
+                                    <input type="text"  class="w-100"
                                     formControlName="adresse" class="form-control" id="adresse" name="adresse" placeholder="Adresse du client" required>
                                 </div>
 
                                 <div class="d-flex flex-column align-items-center">
                                     <label>Code postal</label>
-                                    <input type="text" value="{{clients[i].codePostal}}" class="w-100"
+                                    <input type="text"  class="w-100"
                                     formControlName="codePostal" class="form-control" id="codePostal" name="codePostal" placeholder="Code postal" required>
                                 </div>
 
                                 <div class="d-flex flex-column align-items-center">
                                     <label>Téléphone</label>
-                                    <input type="text" value="{{clients[i].telephone}}" class="w-100"
+                                    <input type="text" class="w-100"
                                     formControlName="telephone" class="form-control" id="telephone" name="telephone" placeholder="Numéro de telephone" required>
                                 </div>
                             </form>
 
-                            <form [formGroup]="modifiedCompteCourrant">
-                                <h5 class="text-center">Compte Courrant</h5>
-                                <div class="d-flex flex-column align-items-center">
-                                   <label>Numéro de compte</label>
-                                   <input type="text" value="" class="w-100"
-                                   formControlName="numero" class="form-control" id="numero" name="numero" placeholder="Numéro de compte" required>
-                                </div>
-    
-                                <div class="d-flex flex-column align-items-center">
-                                   <label>Solde actuel</label>
-                                   <input type="text" value="" class="w-100"
-                                   formControlName="solde" class="form-control" id="solde" name="solde" placeholder="Premier dépot" required>
-                               </div>
-                            </form>
-    
-                            
-                            <form [formGroup]="modifiedCompteEpargne">
-                                <h5 class="text-center">Compte Epargne</h5>
-                                <div class="d-flex flex-column align-items-center">
-                                    <label>Numéro de compte</label>
-                                    <input type="text" value="" class="w-100"
-                                    formControlName="numero" class="form-control" id="numero" name="numero" placeholder="Numéro de compte" required>
-                                </div>
-    
-                                <div class="d-flex flex-column align-items-center">
-                                    <label>Solde actuel</label>
-                                    <input type="text" value="" class="w-100"
-                                    formControlName="solde" class="form-control" id="solde" name="solde" placeholder="Premier dépot" required>
-                                </div>
-                              </form>
-
-                               
+                            <div>
+                                <form [formGroup]="modifiedCompteCourrant">
+                                    <h5 class="text-center">Compte Courrant</h5>
+                                    <div class="d-flex flex-column align-items-center">
+                                       <label>Numéro de compte</label>
+                                       <input type="text" value="" class="w-100"
+                                       formControlName="numero" class="form-control" id="numero" name="numero" placeholder="Numéro de compte" required>
+                                    </div>
+        
+                                    <div class="d-flex flex-column align-items-center">
+                                       <label>Solde actuel</label>
+                                       <input type="text" value="" class="w-100"
+                                       formControlName="solde" class="form-control" id="solde" name="solde" placeholder="Premier dépot" required>
+                                   </div>
+                                </form>
+        
+                                
+                                <form [formGroup]="modifiedCompteEpargne">
+                                    <h5 class="text-center">Compte Epargne</h5>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <label>Numéro de compte</label>
+                                        <input type="text" value="" class="w-100"
+                                        formControlName="numero" class="form-control" id="numero" name="numero" placeholder="Numéro de compte" required>
+                                    </div>
+        
+                                    <div class="d-flex flex-column align-items-center">
+                                        <label>Solde actuel</label>
+                                        <input type="text" value="" class="w-100"
+                                        formControlName="solde" class="form-control" id="solde" name="solde" placeholder="Premier dépot" required>
+                                    </div>
+                                  </form>
+                            </div>   
+                        
                             <form [formGroup]="modifiedCarte">
                                 <h5 class="text-center">Carte</h5>
                                 <div class="d-flex flex-column align-items-center">

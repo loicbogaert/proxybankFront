@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Agence } from '../model/agence.model';
 import { AgencesService } from '../services/agences.service';
@@ -10,10 +11,15 @@ import { AgencesService } from '../services/agences.service';
 })
 export class AdminComponent implements OnInit {
   agences:Agence[] = [];
-  constructor(private agencesService: AgencesService) { }
+  constructor(private agencesService: AgencesService,
+      private router: Router
+      ) { }
 
+  adresse:string = this.router.url;
+  
   ngOnInit(): void {
     this.getAgences();
+    console.log(this.adresse.split("/admin;id=").pop())
   }
 
   getAgences(){

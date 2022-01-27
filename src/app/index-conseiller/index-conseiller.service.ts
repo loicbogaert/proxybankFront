@@ -22,6 +22,7 @@ export class IndexConseillerService {
  
   readonly API_URL : string = 'http://localhost:8080/conseillers';
   readonly CLIENT_URL: string = 'http://localhost:8080/clients/';
+  readonly CLIENT_UPDATE_URL: string = 'http://localhost:8080/clients/updateclient';
   readonly FULL_REGISTER_URL: string = 'http://localhost:8080/clients/fullregister/';
   readonly VIREMENT_URL: string = 'http://localhost:8080/virement'
 
@@ -61,21 +62,23 @@ export class IndexConseillerService {
   }
 
   modifyClient(clientObjet: any, id:number) {
+    console.log(clientObjet)
     const obj = {
-      nom: clientObjet.modifyClient.nom,
-      prenom:clientObjet.modifyClient.prenom,
-      adresse:clientObjet.modifyClient.adresse,
-      telephone:clientObjet.modifyClient.telephone,
-      codePostal:clientObjet.modifyClient.codePostal,
+      idClient : id,
+      nom: clientObjet.modifClient.nom,
+      prenom:clientObjet.modifClient.prenom,
+      adresse:clientObjet.modifClient.adresse,
+      telephone:clientObjet.modifClient.telephone,
+      codePostal:clientObjet.modifClient.codePostal,
       numeroCompteCourrant:clientObjet.modifCompteCourrant.numero, 
       soldeCompteCourrant:clientObjet.modifCompteCourrant.solde, 
-      soldeCompteEpargne:clientObjet.modifCompteEpargneModify.solde, 
-      numeroCompteEpargne:clientObjet.modifCompteEpargneModify.numero, 
-      numeroDeCarte:clientObjet.modifCarteModify.numero, 
-      typeDeCarte:clientObjet.modifCarteModify.typeCarte
+      soldeCompteEpargne:clientObjet.modifCompteEpargne.solde, 
+      numeroCompteEpargne:clientObjet.modifCompteEpargne.numero, 
+      numeroDeCarte:clientObjet.modifCarte.numero, 
+      typeDeCarte:clientObjet.modifCarte.typeCarte
     }
 
-    return this.http.put<Client>(`${this.CLIENT_URL}${id}`, obj, httpOptions).subscribe()
+    return this.http.put<Client>(`${this.CLIENT_UPDATE_URL}`, obj, httpOptions)
   }
 
 

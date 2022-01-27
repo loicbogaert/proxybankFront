@@ -114,8 +114,10 @@ export class ListeClientsComponent implements OnInit {
 
   /*Requete service modify client*/
  public formUpdateClient(id: any) {
-    this.modifiedClient = {modifClient : this.clientModify.value, modifCompteCourrant: this.modifiedCompteCourrant.value, modifCompteEpargne: this.modifiedCompteEpargne, modifCarte : this.modifiedCarte};
-    this.service.modifyClient(this.modifiedClient , id); //subscribe ici
+
+    this.modifiedClient = {modifClient : this.clientModify.value, modifCompteCourrant: this.modifiedCompteCourrant.value, modifCompteEpargne: this.modifiedCompteEpargne.value, modifCarte : this.modifiedCarte.value};
+    console.log(this.modifiedClient)
+    this.service.modifyClient(this.modifiedClient , id).subscribe();
   }
   
 

@@ -25,6 +25,8 @@ export class ListeClientsComponent implements OnInit {
 
   modifiedClient! : any;
 
+  addedClientId! :any;
+
   /*Modification du client form*/
   clientModify : FormGroup = this.fb.group({
     nom :  ['', Validators.required],
@@ -117,15 +119,25 @@ export class ListeClientsComponent implements OnInit {
 
     this.modifiedClient = {modifClient : this.clientModify.value, modifCompteCourrant: this.modifiedCompteCourrant.value, modifCompteEpargne: this.modifiedCompteEpargne.value, modifCarte : this.modifiedCarte.value};
     console.log(this.modifiedClient)
-    this.service.modifyClient(this.modifiedClient , id).subscribe();
+    this.service.modifyClient(this.modifiedClient , id).subscribe(data => {
+      console.log(data)
+    });
   }
   
 
   /**Requete service ajout d'un client */
  public addClientForm(){
    this.fullRegisterClient = {addClient: this.addClient.value, addCompteCourrant: this.compteCourrantModify.value, addCompteEpargneModify : this.compteEpargneModify.value, addCarteModify : this.carteModify.value};
-    
+
   this.service.fullRegisterClient(this.fullRegisterClient).subscribe(data=> {
+    console.log(data)
+    this.addedClientId = data;
+    this.addClientToConseiller();
   })
+  }
+
+  public addClientToConseiller () {
+    console.log(this.addedClientId)
+    this.service.addClientToConseiller(this.addedClientId).subscribe();
   }
 }

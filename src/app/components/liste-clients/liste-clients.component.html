@@ -14,7 +14,7 @@
                 
                 <tbody>
                     <tr *ngFor = "let client of clients let i=index" (click)="giveId(i)">
-                        <td class=" text-center align-middle">{{client.prenom}}</td>
+                        <td class=" text-center align-middle">{{client.nom}}</td>
                         <td class=" text-center align-middle">{{client.prenom}}</td>
                         <td class="text-center"> <button  type="button" class="btn btn-primary m-1" data-bs-toggle="modal" [attr.data-bs-target]="'#idClientModif' + i" (clic)="giveId(i)">Modifier</button></td>
                         <td class="text-center"> <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" [attr.data-bs-target]="'#idClientSuppr' + i" >X</button>   </td>

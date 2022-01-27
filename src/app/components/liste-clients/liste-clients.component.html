@@ -138,7 +138,7 @@
                             </form>  
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" (click)="formUpdateClient(client.id)" data-bs-dismiss="modal">Sauvegarder les modifications</button>
+                        <button type="button" class="btn btn-primary" [disabled]="!modifiedCarte.valid || !modifiedCompteCourrant.valid || !modifiedCompteEpargne.valid || !clientModify.valid" (click)="formUpdateClient(client.id)" data-bs-dismiss="modal">Sauvegarder les modifications</button>
                         </div>
                     </div>
                     </div>
@@ -245,7 +245,7 @@
                         </form>
             </div>
                 <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" (click)="addClientForm()" data-bs-dismiss="modal">Ajouter le client</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!compteEpargneModify.valid || compteCourrantModify.invalid || !carteModify.valid || !addClient.valid" (click)="addClientForm()" data-bs-dismiss="modal">Ajouter le client</button>
                 </div>
             </div>
             </div>

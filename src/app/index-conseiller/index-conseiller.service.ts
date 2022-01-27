@@ -77,6 +77,7 @@ export class IndexConseillerService {
       numeroDeCarte:clientObjet.modifCarte.numero, 
       typeDeCarte:clientObjet.modifCarte.typeCarte
     }
+    console.log(obj);
 
     return this.http.put<Client>(`${this.CLIENT_UPDATE_URL}`, obj, httpOptions)
   }

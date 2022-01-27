@@ -89,7 +89,6 @@ export class VirementComponent implements OnInit {
           }, 500);
       }
   }
-
   /**Fonction de virement */
 
   virement() {

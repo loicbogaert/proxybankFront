@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ListeClientsComponent } from '../components/liste-clients/liste-clients.component';
 import { IndexConseillerService } from '../index-conseiller/index-conseiller.service';
 import { Carte } from '../model/carte.model';
@@ -20,7 +21,8 @@ export class IndexConseillerComponent implements OnInit{
 
   @ViewChild(ListeClientsComponent) ListeClientsComponent:any;
 
-  constructor( private service: IndexConseillerService) {}
+  constructor( private service: IndexConseillerService,
+    ) {}
 
   /*Receive index from liste-clients + set attributs*/ 
   getId(id: any):void {
@@ -31,6 +33,8 @@ export class IndexConseillerComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    
+
     this.service.getConseillers().subscribe((data:any)=>{
       this.clients = data.clients;
     })

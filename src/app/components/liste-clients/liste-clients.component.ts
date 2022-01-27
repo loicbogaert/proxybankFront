@@ -12,9 +12,22 @@ import { Carte } from 'src/app/model/carte.model';
 })
 export class ListeClientsComponent implements OnInit {
 
+  @Output() clientId = new EventEmitter<any>();
+  @Input() clients!: Client[];
+
+  actualClientId: number = 0;
+
+  compteEpargneActuel! : Compte;
+  compteCourrantActuel! : Compte;
+  carteActuelle! : Carte;
+
+  fullRegisterClient! : any;
+
+  modifiedClient! : any;
+
   /*Modification du client form*/
   clientModify : FormGroup = this.fb.group({
-    nom :  ["", Validators.required],
+    nom :  ['', Validators.required],
     prenom :   ["", Validators.required], 
     adresse :   ["", Validators.required], 
     codePostal :  ["", Validators.required], 
@@ -61,16 +74,7 @@ export class ListeClientsComponent implements OnInit {
     typeCarte :   ['', Validators.required], 
   })
 
-  @Output() clientId = new EventEmitter<any>();
-  @Input() clients!: Client[];
 
-  actualClientId: number = 0;
-  compteEpargneActuel! : Compte;
-  compteCourrantActuel! : Compte;
-  carteActuelle! : Carte;
-
-  fullRegisterClient! : any;
-  modifiedClient! : any;
 
   constructor(private service: IndexConseillerService,
               private fb: FormBuilder
@@ -86,13 +90,34 @@ export class ListeClientsComponent implements OnInit {
 
   /** Emit index to index-conseiller */
   giveId(id:any): void {
+    this.actualClientId = id;
     this.clientId.emit(id);
+    this.setPlaceHolder();
+  }
+
+  setPlaceHolder(): void {
+    this.clientModify.controls['nom'].setValue(this.clients[this.actualClientId].nom);
+    this.clientModify.controls['prenom'].setValue(this.clients[this.actualClientId].prenom);
+    this.clientModify.controls['adresse'].setValue(this.clients[this.actualClientId].adresse);
+    this.clientModify.controls['codePostal'].setValue(this.clients[this.actualClientId].codePostal);
+    this.clientModify.controls['telephone'].setValue(this.clients[this.actualClientId].telephone);
+
+    this.modifiedCompteCourrant.controls['solde'].setValue(this.clients[this.actualClientId].compteCourrant.solde);
+    this.modifiedCompteCourrant.controls['numero'].setValue(this.clients[this.actualClientId].compteCourrant.numeroDeCompte);
+
+    this.modifiedCompteEpargne.controls['solde'].setValue(this.clients[this.actualClientId].compteEpargne.solde);
+    this.modifiedCompteEpargne.controls['numero'].setValue(this.clients[this.actualClientId].compteEpargne.numeroDeCompte);
+
+    this.modifiedCarte.controls['typeCarte'].setValue(this.clients[this.actualClientId].cartes[0].typeCarte);
+    this.modifiedCarte.controls['numero'].setValue(this.clients[this.actualClientId].cartes[0].numero);
   }
 
   /*Requete service modify client*/
  public formUpdateClient(id: any) {
-    this.modifiedClient = {modifClient : this.clientModify.value, modifCompteCourrant: this.modifiedCompteCourrant.value, modifCompteEpargne: this.modifiedCompteEpargne, modifCarte : this.modifiedCarte};
-    this.service.modifyClient(this.modifiedClient , id);
+
+    this.modifiedClient = {modifClient : this.clientModify.value, modifCompteCourrant: this.modifiedCompteCourrant.value, modifCompteEpargne: this.modifiedCompteEpargne.value, modifCarte : this.modifiedCarte.value};
+    console.log(this.modifiedClient)
+    this.service.modifyClient(this.modifiedClient , id).subscribe();
   }
   
 

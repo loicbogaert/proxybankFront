@@ -35,10 +35,12 @@ export class LoginComponent implements OnInit {
         .subscribe((response) => {
        localStorage.setItem("token", response.accessToken);
         const roles = response.roles;
+        console.log(response)
+        console.log(this.router)
         for (const role of roles) {
-          if(role === "ROLE_ADMIN"){this.router.navigate(['/admin'])}
-          if(role === "ROLE_DIRECTEUR"){this.router.navigate(['/directeur'])}
-          if(role === "ROLE_CONSEILLER"){this.router.navigate(['/conseiller'])}
+          if(role === "ROLE_ADMIN"){this.router.navigate([`/admin`])}
+          if(role === "ROLE_DIRECTEUR"){this.router.navigate([`/directeur`,{id:response.id}])}
+          if(role === "ROLE_CONSEILLER"){this.router.navigate([`/conseiller`,{id:response.id}])}
         }
         this.connexion = true;
         }, error=>{

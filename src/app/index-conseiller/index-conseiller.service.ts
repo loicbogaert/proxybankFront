@@ -36,7 +36,8 @@ export class IndexConseillerService {
 
     // méthodes conseillers
   getConseillers(): Observable<any> {
-    this.id = this.adresse.split("/conseiller;id=").pop()
+    this.id = this.adresse.split("/conseiller/").pop()
+    console.log(`${this.API_URL}/${this.id}`)
     return this.http.get(`${this.API_URL}/${this.id}`, httpOptions).pipe(tap((data:any) => {
     }))
   }
@@ -77,6 +78,7 @@ export class IndexConseillerService {
       numeroDeCarte:clientObjet.modifCarte.numero, 
       typeDeCarte:clientObjet.modifCarte.typeCarte
     }
+  
 
     return this.http.put<Client>(`${this.CLIENT_UPDATE_URL}`, obj, httpOptions)
   }

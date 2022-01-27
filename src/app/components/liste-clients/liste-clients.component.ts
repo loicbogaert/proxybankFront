@@ -4,6 +4,7 @@ import { IndexConseillerService } from '../../index-conseiller/index-conseiller.
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Compte } from 'src/app/model/compte.model';
 import { Carte } from 'src/app/model/carte.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-clients',
@@ -79,7 +80,9 @@ export class ListeClientsComponent implements OnInit {
 
 
   constructor(private service: IndexConseillerService,
-              private fb: FormBuilder
+              private fb: FormBuilder,
+              private router:Router,
+              private activatedRoute: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
@@ -121,9 +124,13 @@ export class ListeClientsComponent implements OnInit {
     console.log(this.modifiedClient)
     this.service.modifyClient(this.modifiedClient , id).subscribe(data => {
       console.log(data)
+      
+      this.router.navigate([this.router.url])
+      console.log(this.router.url)
+    
     });
   }
-  
+
 
   /**Requete service ajout d'un client */
  public addClientForm(){

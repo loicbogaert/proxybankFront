@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ListeClientsComponent } from '../components/liste-clients/liste-clients.component';
 import { IndexConseillerService } from '../index-conseiller/index-conseiller.service';
+import { AuthService } from '../login/auth.service';
 import { Carte } from '../model/carte.model';
 import { Client } from '../model/client.model';
 import { Compte } from '../model/compte.model';
@@ -20,9 +21,9 @@ export class IndexConseillerComponent implements OnInit{
 
   @ViewChild(ListeClientsComponent) ListeClientsComponent:any;
 
-  constructor( private service: IndexConseillerService) {}
+  constructor( private service: IndexConseillerService, private authservice: AuthService ) {}
 
-  /*Receive index from liste-clients + set attributs*/ 
+  /*Receive index from liste-clients + set attributs*/
   getId(id: any):void {
     this.clientId = id;
     this.singleClient = this.clients[this.clientId]
@@ -38,5 +39,9 @@ export class IndexConseillerComponent implements OnInit{
 
   delete(id:any) {
     this.service.deleteClient(id);
+  }
+
+  logout(){
+    this.authservice.logOut();
   }
 }

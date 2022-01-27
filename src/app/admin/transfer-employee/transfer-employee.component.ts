@@ -14,8 +14,6 @@ import { transfertEmploye } from 'src/app/model/transfertEmploye.model';
 export class TransferEmployeeComponent implements OnInit {
   @Input() listeAgences:Agence[]= [];
   transferForm = {} as FormGroup;
-  //agences:Agence[] = [];
-
   conseillers: Conseiller[]= [];
   agences: any[] = [];
   mesConseillers: transfertEmploye[]=[];
@@ -24,6 +22,7 @@ export class TransferEmployeeComponent implements OnInit {
   employeId!: number;
   agence!: Agence;
   conseiller!: Conseiller;
+  transferred:boolean=false;
   constructor(private formBuilder: FormBuilder, private agencesService: AgencesService, private employeService:EmployeesService) { }
 
   ngOnInit(): void {
@@ -35,7 +34,7 @@ export class TransferEmployeeComponent implements OnInit {
     });
 
     this.agencesService.mesAgence().subscribe((agences:any)=>{
-     console.log(agences)
+     //console.log(agences)
      this.agences = agences;
      this.agences.forEach(agence=>{
       // console.log('idAgence:'+agence.id , agence.agenceName);
@@ -79,7 +78,9 @@ export class TransferEmployeeComponent implements OnInit {
     this.agence = this.transferForm.value.agenceSelected;
     this.agenceId=this.transferForm.value.agenceSelected.id;
     this.employeId=this.transferForm.value.employeSelected;
-    this.agencesService.transferConseiller(this.agenceId, this.employeId, this.agence).subscribe();
+    this.agencesService.transferConseiller(this.agenceId, this.employeId, this.agence).subscribe((response)=>{
+      console.log(response);
+    });
   }
 
 }

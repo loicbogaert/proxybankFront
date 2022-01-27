@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(val.username, val.password)
         .subscribe((response) => {
        localStorage.setItem("token", response.accessToken);
+       localStorage.setItem("username", response.username);
         const roles = response.roles;
         for (const role of roles) {
           if(role === "ROLE_ADMIN"){this.router.navigate(['/admin'])}
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
         this.connexion = true;
         }, error=>{
           if (error.status === 401 ) {
+            this.authService.logOut();
             this.connexion = false;
           }})
       }

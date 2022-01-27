@@ -33,6 +33,7 @@ import { InfoComptesClientComponent } from './components/info-comptes-client/inf
 import { VirementComponent } from './components/virement/virement.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgChartsModule } from 'ng2-charts';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { NgChartsModule } from 'ng2-charts';
     ListeClientsComponent,
     InfoPersoClientComponent,
     InfoComptesClientComponent,
-    VirementComponent
+    VirementComponent,
+    PagenotfoundComponent
 
   ],
   imports: [

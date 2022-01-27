@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Agence } from '../model/agence.model';
 import { Conseiller } from '../model/conseiller.model';
 import { Client } from '../model/client.model';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-index-directeur',
@@ -12,8 +13,10 @@ import { Client } from '../model/client.model';
 })
 export class IndexDirecteurComponent implements OnInit {
    //listConseil:any = this.myAgence.listConseiller;
-  constructor() { }
-  
+  constructor(private authservice: AuthService) { }
+  logout(){
+    this.authservice.logOut();
+  }
   ngOnInit(): void {}
- 
+
 }

@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(val.username, val.password)
         .subscribe((response) => {
        localStorage.setItem("token", response.accessToken);
+       localStorage.setItem("username", response.username);
         const roles = response.roles;
         console.log(response)
         console.log(this.router)
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
         this.connexion = true;
         }, error=>{
           if (error.status === 401 ) {
+            this.authService.logOut();
             this.connexion = false;
           }})
       }

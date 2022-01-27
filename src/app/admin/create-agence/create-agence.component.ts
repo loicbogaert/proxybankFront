@@ -25,18 +25,16 @@ export class CreateAgenceComponent implements OnInit {
   }
 
   onFormSubmit() {
-    this.dataSaved = false;
     let agence = this.agenceForm.value;
-    console.log(agence)
     this.creationAgence(agence.agenceName);
-    alert('Agence :' + JSON.stringify(this.agenceForm.value.agenceName, null, 4)+' saved!');
+    //alert('Agence :' + JSON.stringify(this.agenceForm.value.agenceName, null, 4)+' saved!');
     this.agenceForm.reset();
   }
   creationAgence(agence: Agence) {
     this.agencesService.creationAgence(agence).subscribe(
       agence => {
-        console.log(agence);
         this.dataSaved = true;
+       setTimeout(()=>{this.dataSaved = false}, 3000);
       },
       err => {
         console.log(err);

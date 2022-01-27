@@ -45,6 +45,7 @@ public mesAgence():Observable<any>{
     /**XXXXXXXXXXXXXXXXXXXXXXX Add Agence XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
     transferConseiller(agenceId:number, conseillerId:number, agence:Agence){
+      console.log(conseillerId)
       const url = `${this.BASE_URL}/${agenceId}/ajouterEmploye/${conseillerId}`
       return this.http.put<Agence>(url, agence).pipe(
         map(res => console.log(res))

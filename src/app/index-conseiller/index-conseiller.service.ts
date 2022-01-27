@@ -43,7 +43,8 @@ export class IndexConseillerService {
   }
 
   addClientToConseiller(idClient:string) {
-    this.id = this.adresse.split("/conseiller;id=").pop()
+    this.id = this.adresse.split("/conseiller/").pop()
+    console.log(`${this.API_URL}/${this.id}/assignerClient?clientId=${idClient}`)
     return this.http.post(`${this.API_URL}/${this.id}/assignerClient?clientId=${idClient}`, httpOptions)
   }
 

@@ -12,7 +12,7 @@ import { AgencesService } from '../services/agences.service';
 })
 export class AdminComponent implements OnInit {
   agences:Agence[] = [];
-  constructor(private agencesService: AgencesService, private authservice: AuthService) { }
+  constructor(private agencesService: AgencesService, private authservice: AuthService, private router: Router) { }
 
   adresse:string = this.router.url;
 

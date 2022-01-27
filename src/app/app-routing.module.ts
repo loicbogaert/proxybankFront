@@ -10,7 +10,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {path: "", component : LoginComponent},
-  {path: "conseiller/:id", component: IndexConseillerComponent},
+  {path: "conseiller", component: IndexConseillerComponent},
   {path: "login", component : LoginComponent},
   {path: "signup", component : SignupComponent},
   {path:"directeur",component: IndexDirecteurComponent},

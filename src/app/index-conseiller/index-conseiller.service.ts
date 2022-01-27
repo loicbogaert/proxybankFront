@@ -101,6 +101,6 @@ export class IndexConseillerService {
 
   virement(montant: number ,idEmetteur : number, idRecepteur: number) {
     console.log({montant, idEmetteur, idRecepteur})
-    return this.http.put<any>(`${this.VIREMENT_URL}`, {montant, idEmetteur, idRecepteur}, httpOptions);
+    return this.http.put<any>(`${this.VIREMENT_URL}/?montant=${montant}&recepteur=${idRecepteur}&emeteur=${idEmetteur}`, {montant, idEmetteur, idRecepteur}, httpOptions);
   }
 }

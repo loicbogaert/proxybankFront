@@ -124,9 +124,8 @@ export class ListeClientsComponent implements OnInit {
     console.log(this.modifiedClient)
     this.service.modifyClient(this.modifiedClient , id).subscribe(data => {
       console.log(data)
+  
       
-      this.router.navigate([this.router.url])
-      console.log(this.router.url)
     
     });
   }
@@ -140,7 +139,9 @@ export class ListeClientsComponent implements OnInit {
     console.log(data)
     this.addedClientId = data;
     this.addClientToConseiller();
+    
   })
+  
   }
 
   public addClientToConseiller () {

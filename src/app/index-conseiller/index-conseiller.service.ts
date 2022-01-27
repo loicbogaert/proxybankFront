@@ -50,6 +50,7 @@ export class IndexConseillerService {
 
   // méthodes clients
   deleteClient(id:string) {
+    this.refresh();
     return this.http.delete(`${this.CLIENT_URL}${id}`, httpOptions).subscribe()
     }
 
@@ -80,8 +81,9 @@ export class IndexConseillerService {
       typeDeCarte:clientObjet.modifCarte.typeCarte
     }
   
-
+   
     return this.http.put<Client>(`${this.CLIENT_UPDATE_URL}`, obj, httpOptions)
+ 
   }
 
 
@@ -99,11 +101,18 @@ export class IndexConseillerService {
     numeroDeCarte:clientObjet.addCarteModify.numero, 
     typeDeCarte:clientObjet.addCarteModify.typeCarte
     }
+    
       return this.http.post<any>(`${this.FULL_REGISTER_URL}`, obj, httpOptions) 
   }
 
   virement(montant: number ,idEmetteur : number, idRecepteur: number) {
     console.log({montant, idEmetteur, idRecepteur})
     return this.http.put<any>(`${this.VIREMENT_URL}/?montant=${montant}&recepteur=${idRecepteur}&emeteur=${idEmetteur}`, {montant, idEmetteur, idRecepteur}, httpOptions);
+  }
+  refresh(){
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.id = this.adresse.split("/conseiller/").pop()
+      this.router.navigate([`conseiller/${this.id}`]);
+  }); 
   }
 }
